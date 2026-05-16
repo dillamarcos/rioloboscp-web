@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jugador;
+use App\Models\Producto;
+use App\Models\Socio;
+use App\Models\Temporada;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,9 +29,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            EquipoSeeder::class,
             NoticiaSeeder::class,
+            TemporadaSeeder::class,  
             PartidoSeeder::class,
             CategoriaSeeder::class,
+            JugadorSeeder::class,
+            ProductoSeeder::class,
         ]);
+
     }
 }

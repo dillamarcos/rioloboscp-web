@@ -1,58 +1,130 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Riolobos CP - Web de gestión deportiva
+Proyecto TFG desarrollado con Laravel para la gestión y difusión del club Riolobos C.P.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Tecnologías utilizadas
+- Laravel
+- Blade
+- Tailwind CSS
+- Alpine.js
+- MySQL
 
-## About Laravel
+## Funcionalidades
+- Gestión de usuarios
+- Calendario de partidos
+- Clasificación
+- Datos del club
+- Tienda de productos del equipo
+- Noticias del club
+- Socios
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Autor
+Proyecto desarrollado por Marcos Dillana Rodríguez
+IES Virgern de la Paloma - DAM (Desarrollo de Aplicaciones Multiplataforma)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalación y puesta en marcha del proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Para poder ejecutar este proyecto en cualquier ordenador es necesario seguir los siguientes pasos.
 
-## Learning Laravel
+### 1. Instalar programas necesarios y descomprimir ZIP
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Antes de empezar, es necesario descomprimir el zip en una carpeta del equipo e instalar:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **XAMPP** (incluye PHP y MySQL de forma sencilla)
+  https://www.apachefriends.org/
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- **Composer** (gestor de dependencias de PHP)
+  https://getcomposer.org/
 
-## Agentic Development
+- **Node.js** (para compilar el frontend)
+  https://nodejs.org/
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-```bash
-composer require laravel/boost --dev
+### 2. Iniciar XAMPP
 
-php artisan boost:install
-```
+Abrir XAMPP y arrancar:
+- Apache
+- MySQL
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Entrar en la carpeta del proyecto o clonarlo (en caso de hacerlo desde GitHub)
 
-## Contributing
+Abrir una terminal dentro de la carpeta descomprimida:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+cd proyecto_riolobos_cp
 
-## Code of Conduct
+En caso de Github:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+git clone https://github.com/dillamarcos/rioloboscp-web.git
 
-## Security Vulnerabilities
+cd rioloboscp-web
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### 4. Instalar dependencias de PHP
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+composer install
+
+### 5. Instalar dependencias de Node.js
+
+npm install
+
+### 6. Configurar el archivo .env
+
+Copiar el archivo de ejemplo:
+
+copy .env.example .env
+
+Después abrir el archivo `.env` y configurar la base de datos:
+
+DB_DATABASE=riolobos_cp
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+### 7. Crear la base de datos
+
+Entrar en:
+http://localhost/phpmyadmin
+
+Y crear una base de datos con el nombre:
+
+riolobos_cp
+
+
+### 8. Generar la clave de la aplicación
+
+php artisan key:generate
+
+
+### 9. Ejecutar migraciones y datos de prueba
+
+php artisan migrate --seed
+
+
+### 10. Compilar el frontend
+
+npm run dev
+
+
+### 11. Iniciar el servidor
+
+php artisan serve
+
+
+### 12. Acceder a la web
+
+Abrir en el navegador:
+
+http://127.0.0.1:8000
+
+### 13. Navegación dentro de la web
+
+Al ejecutar los seeders se crean campos de prueba en la base de datos, hay un usuario creado en modo admin para poder comprobar el funcionamiento de la web,
+cuando inicie sesión tenga en cuenta los siguientes datos:
+
+    'nombre' => 'Prueba',
+    'apellidos'=> 'Soy Prueba',
+    'email' => 'prueba@gmail.com',
+    'telefono' => '111111111',
+    'rol' => 'admin',
+    'password' => Hash::make('12345678')
+
+O sino puede registrarse como un usuario nuevo.

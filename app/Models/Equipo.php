@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Jugador;
 use App\Models\Partido;
-use App\Models\EstadisticaEquipo;
 use App\Models\Producto;
 use App\Models\Noticia;
 use App\Models\Temporada;

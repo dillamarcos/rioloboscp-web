@@ -296,28 +296,28 @@
         <!-- EDITAR JUGADOR -->
         <div
             x-data="{
-        open:false,
-        jugador:{},
-        preview:'',
+                open:false,
+                jugador:{},
+                preview:'',
 
-        updatePreview(event) {
+                updatePreview(event) {
 
-            const file = event.target.files[0];
+                    const file = event.target.files[0];
 
-            if(file){
-                this.preview = URL.createObjectURL(file);
-            }
-        }
-    }"
+                    if(file){
+                        this.preview = URL.createObjectURL(file);
+                    }
+                }
+            }"
 
-            x-on:open-edit-jugador.window="
-        open = true;
-        jugador = $event.detail;
+                    x-on:open-edit-jugador.window="
+                open = true;
+                jugador = $event.detail;
 
-        preview = jugador.imagen
-            ? '/storage/' + jugador.imagen
-            : '/images/default.png';
-    "
+                preview = jugador.imagen
+                    ? '/storage/' + jugador.imagen
+                    : '/images/default.png';
+            "
 
             x-show="open"
             x-cloak
@@ -494,18 +494,18 @@
         <!-- CREAR JUGADOR -->
         <div
             x-data="{
-        open:false,
-        preview:null,
+                open:false,
+                preview:null,
 
-        updatePreview(event) {
+                updatePreview(event) {
 
-            const file = event.target.files[0];
+                    const file = event.target.files[0];
 
-            if(file){
-                this.preview = URL.createObjectURL(file);
-            }
-        }
-    }"
+                    if(file){
+                        this.preview = URL.createObjectURL(file);
+                    }
+                }
+            }"
 
             x-on:open-create-jugador.window="open=true;preview=null"
             x-show="open"
@@ -518,8 +518,8 @@
 
             <!-- MODAL -->
             <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-        w-full max-w-sm sm:max-w-md md:max-w-2xl
-        p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                w-full max-w-sm sm:max-w-md md:max-w-2xl
+                p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between mb-4">

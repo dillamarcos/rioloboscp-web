@@ -22,7 +22,8 @@ class PartidoSeeder extends Seeder
             'jornada' => 1,
             'goles_local' => 3,
             'goles_visitante' => 1,
-            'campo' => 'Riolobos',
+            'campo' => 'Pabellón Municipal de Riolobos',
+            'temporada_id' => 1, // Temporada 2025/26
             'equipo_local_id' => $local->id,
             'equipo_visitante_id' => $visitante->id
         ]);
@@ -33,6 +34,7 @@ class PartidoSeeder extends Seeder
             'goles_local' => 0,
             'goles_visitante' => 0,
             'campo' => 'Fuera',
+            'temporada_id' => 1, // Temporada 2025/26
             'equipo_local_id' => $local->id,
             'equipo_visitante_id' => $visitante->id
         ]);
