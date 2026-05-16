@@ -12,7 +12,7 @@ class HomeController extends Controller
         $equipoId = 1;
 
         $ultimasNoticias = Noticia::where('equipo_id', $equipoId)
-            ->latest()
+            ->orderBy('fecha_publicacion', 'desc')
             ->take(10)
             ->get();
 
@@ -65,16 +65,8 @@ class HomeController extends Controller
         $puesto = 1;
 
         return view('home', compact(
-            'ultimasNoticias',
-            'ultimoPartido',
-            'proximoPartido',
-            'racha',
-            'victorias',
-            'empates',
-            'derrotas',
-            'puntos',
-            'puesto',
-            'equipoId'
+            'ultimasNoticias','ultimoPartido','proximoPartido','racha','victorias','empates',
+            'derrotas','puntos','puesto','equipoId'
         ));
     }
 }

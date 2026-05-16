@@ -1,5 +1,4 @@
 <x-guest-layout>
-
     <div class="w-full max-w-md mx-auto bg-white p-3">
 
         <h1 class="text-2xl font-bold text-center text-indigo-600">
@@ -72,7 +71,6 @@
 
             <!-- BOTONES -->
             <div class="flex gap-3 mt-2">
-
                 <a href="{{ route('home') }}"
                     class="flex-1 text-center bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 hover:scale-105 transition">
                     Volver
@@ -82,11 +80,8 @@
                     class="flex-1 bg-indigo-500 text-white py-2 rounded-lg hover:bg-indigo-600 hover:scale-105 transition">
                     Registrarse
                 </button>
-
             </div>
 
         </form>
-
     </div>
-
 </x-guest-layout>

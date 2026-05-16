@@ -48,7 +48,7 @@ class CarritoController extends Controller
         return view('tienda.carrito', compact('items', 'total'));
     }
 
-    // ➕ AUMENTAR CANTIDAD
+    // AUMENTAR CANTIDAD
     public function increase(int $id)
     {
         $item = Carrito::findOrFail($id);
@@ -58,7 +58,7 @@ class CarritoController extends Controller
         return back();
     }
 
-    // ➖ DISMINUIR CANTIDAD
+    // DISMINUIR CANTIDAD
     public function decrease(int $id)
     {
         $item = Carrito::findOrFail($id);
@@ -72,7 +72,7 @@ class CarritoController extends Controller
         return back();
     }
 
-    // 🗑 ELIMINAR DIRECTO
+    // ELIMINAR DIRECTO
     public function remove(int $id)
     {
         Carrito::findOrFail($id)->delete();
@@ -97,7 +97,7 @@ class CarritoController extends Controller
         $descuento = $esSocio ? $total * 0.05 : 0;
         $totalFinal = $total - $descuento;
 
-        // ENVIAR EMAIL BONITO
+        // ENVIAR EMAIL
         Mail::to('rioloboscp@gmail.com') 
             ->send(new PedidoCarritoMail(
                 $user,

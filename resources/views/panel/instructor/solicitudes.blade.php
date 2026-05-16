@@ -120,7 +120,7 @@
                 <div class="mt-5 flex flex-col sm:flex-row gap-2">
 
                     <form method="POST"
-                        action="{{ route('dashboard.solicitudes.aceptar', $solicitud->id) }}"
+                        action="{{ route('panel.instructor.solicitudes.aceptar', $solicitud->id) }}"
                         class="w-full">
                         @csrf
 
@@ -131,7 +131,7 @@
                     </form>
 
                     <form method="POST"
-                        action="{{ route('dashboard.solicitudes.rechazar', $solicitud->id) }}"
+                        action="{{ route('panel.instructor.solicitudes.rechazar', $solicitud->id) }}"
                         class="w-full">
                         @csrf
 

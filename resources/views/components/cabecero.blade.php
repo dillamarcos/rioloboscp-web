@@ -202,7 +202,7 @@ $isPanelRoute = request()->routeIs('panel.*')
                     <div class="border-t border-gray-200 dark:border-gray-700 bg-gray-50/30 dark:bg-gray-900/10">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="flex items-center gap-3 w-full text-left px-4 py-3 text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors">
+                            <button type="submit" class="flex items-center gap-3 w-full px-4 py-3 text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors border-l-4 border-transparent">
                                 <i class="fas fa-sign-out-alt w-5 text-center text-xs"></i>
                                 Cerrar sesión
                             </button>

@@ -21,8 +21,7 @@
 
 <body class="font-sans text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
 
-    <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900 transition-colors">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900 transition-colors">
 
         <!-- LOGO -->
         <div>
@@ -32,8 +31,7 @@
         </div>
 
         <!-- CARD -->
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md dark:shadow-black/30 overflow-hidden sm:rounded-lg transition-colors">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md dark:shadow-black/30 overflow-hidden sm:rounded-lg transition-colors">
 
             {{ $slot }}
 

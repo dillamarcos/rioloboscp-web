@@ -30,9 +30,9 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,13 +42,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/mi-equipo', [App\Http\Controllers\SocioController::class, 'show'])->name('socio.show');
+    Route::get('/mi-equipo', [SocioController::class, 'show'])->name('socio.show');
     Route::post('/socio/cancelar', [SocioController::class, 'cancelar'])->name('socio.cancelar');
     Route::post('/socio/reactivar', [SocioController::class, 'reactivar'])->name('socio.reactivar');
     // Route::post('/socio', [SocioController::class, 'store'])->name('socio.store');
 });
 
-Route::get('/socio', [App\Http\Controllers\SocioController::class, 'index'])
+Route::get('/socio', [SocioController::class, 'index'])
     ->name('socio.index');
 
 Route::get('/socio/create', [SocioController::class, 'create'])
@@ -89,18 +89,6 @@ Route::get('/noticias', [NoticiaController::class, 'index'])
 Route::get('/noticias/{id}', [NoticiaController::class, 'show'])
     ->name('noticias.show');
 
-Route::middleware(['auth', 'role:admin,instructor'])->group(function () {
-
-    Route::get('/panel/solicitudes', [SolicitudSocioController::class, 'index'])
-        ->name('dashboard.solicitudes');
-
-    Route::post('/panel/solicitudes/{id}/aceptar', [SolicitudSocioController::class, 'aceptar'])
-        ->name('dashboard.solicitudes.aceptar');
-
-    Route::post('/panel/solicitudes/{id}/rechazar', [SolicitudSocioController::class, 'rechazar'])
-        ->name('dashboard.solicitudes.rechazar');
-});
-
 Route::get('/tienda', [TiendaController::class, 'index'])
     ->name('tienda.index');
 
@@ -137,9 +125,9 @@ Route::middleware('auth')->group(function () {
 // PANEL INSTRUCTOR (admin + instructor)
 Route::middleware(['auth', 'role:admin,instructor'])->group(function () {
 
-    Route::get('/panel/instructor', function () {
-        return view('panel.instructor.dashboard');
-    })->name('panel.instructor');
+    // Route::get('/panel/instructor', function () {
+    //     return view('panel.instructor.dashboard');
+    // })->name('panel.instructor');
 
     // RUTAS SOLICITUDES SOCIO
     Route::get('/panel/instructor/solicitudes', [SolicitudSocioController::class, 'index'])
@@ -240,13 +228,12 @@ Route::middleware(['auth', 'role:admin,instructor'])->group(function () {
 
 });
 
-
 // PANEL ADMIN (solo admin)
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
-    Route::get('/panel/admin', function () {
-        return view('panel.admin.dashboard');
-    })->name('panel.admin');
+    // Route::get('/panel/admin', function () {
+    //     return view('panel.admin.dashboard');
+    // })->name('panel.admin');
 
     Route::get('/panel/admin/usuarios', [UserController::class, 'index'])
         ->name('panel.admin.usuarios');

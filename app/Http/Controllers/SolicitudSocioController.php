@@ -93,7 +93,7 @@ class SolicitudSocioController extends Controller
         $solicitud->estado = 'aceptada';
         $solicitud->save();
 
-        return back()->with('success', 'Solicitud aceptada');
+        return back()->with('success', 'Solicitud aceptada correctamente');
     }
 
     public function rechazar(int $id)
@@ -103,6 +103,6 @@ class SolicitudSocioController extends Controller
         $solicitud->estado = 'rechazada';
         $solicitud->save();
 
-        return back()->with('success', 'Solicitud rechazada');
+        return back()->with('success', 'Solicitud rechazada correctamente');
     }
 }
