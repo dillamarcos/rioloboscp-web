@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'nombre' => 'Prueba',
             'apellidos'=> 'Soy Prueba',
             'email' => 'prueba@gmail.com',
+            'email_verified_at' => now(),
             'telefono' => '111111111',
             'rol' => 'admin',
             'password' => Hash::make('12345678'),
