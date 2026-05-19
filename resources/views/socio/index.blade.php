@@ -37,14 +37,14 @@
                 <div class="md:w-1/4 flex flex-col justify-center -mt-10 gap-4">
 
                     <!-- IMAGEN -->
-                    <img src="{{ asset('images/socio.png') }}"
-                        class="max-h-[220px] w-auto object-contain rounded-lg">
+                    <img src="{{ asset('images/socio.jpg') }}"
+                        class="hidden md:block max-h-[220px] w-auto object-contain rounded-lg mt-8">
 
                     <!-- BOTÓN -->
                     @auth
                     @if(auth()->user()->socio)
                     <button
-                        class="w-full bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed opacity-80">
+                        class="w-full bg-gray-400 text-white px-4 py-2 mt-8 md:mt-0 rounded-lg cursor-not-allowed opacity-80">
                         Ya eres socio
                         <i class="fa-solid fa-check ml-1"></i>
                     </button>

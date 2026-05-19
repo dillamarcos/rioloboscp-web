@@ -121,7 +121,7 @@
                         <div class="relative">
 
                             <img src="{{ $jugador->imagen ? asset('storage/'.$jugador->imagen) : asset('storage/default-player.png') }}"
-                                class="w-full h-52 object-cover rounded-lg">
+                                class="w-full h-52 object-contain rounded-lg">
 
                             {{-- DORSAL --}}
                             <div class="absolute bottom-2 right-2 bg-indigo-600 text-white font-bold 
@@ -169,7 +169,7 @@
 
                         <div class="relative">
 
-                            <img src="{{ asset('images/coach.png') }}" class="w-full h-52 object-contain rounded-lg">
+                            <img src="{{ asset('images/segundo.png') }}" class="w-full h-52 object-contain rounded-lg">
 
                         </div>
 
@@ -192,7 +192,7 @@
 
                         <div class="relative">
 
-                            <img src="{{ asset('images/coach.png') }}" class="w-full h-52 object-contain rounded-lg">
+                            <img src="{{ asset('images/2entrenador.png') }}" class="w-full h-52 object-contain rounded-lg">
 
                         </div>
 
@@ -277,7 +277,7 @@
                     </h3>
 
                     <img src="{{ $pichichi?->imagen ? asset('storage/'.$pichichi->imagen) : asset('storage/default-player.png') }}"
-                        class="w-40 h-40 object-cover rounded-full shadow mb-2">
+                        class="w-40 h-40 object-contain rounded-full shadow mb-2">
 
                     <p class="font-semibold text-gray-800 dark:text-gray-100">
                         {{ $pichichi?->nombre }} {{ $pichichi?->apellidos }}
@@ -292,17 +292,17 @@
             </div>
 
             <!-- Tercera fila de la pestaña -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
                 <!-- IZQUIERDA: IMAGEN -->
                 <div class="hidden lg:block bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
 
-                    <img src="{{ asset('images/stats.png') }}" class="w-full max-h-64 p-2 object-contain">
+                    <img src="{{ asset('images/equipo.png') }}" class="w-full max-h-64 p-2 object-contain">
 
                 </div>
 
                 <!-- DERECHA: CARD RESUMEN -->
-                <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow p-6 space-y-4">
+                <div class="lg:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow p-6 space-y-4">
 
                     <h3 class="text-lg font-bold text-gray-700 dark:text-gray-200">
                         Resumen general

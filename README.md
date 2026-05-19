@@ -31,7 +31,7 @@ Para ejecutar este proyecto en cualquier ordenador, sigue los siguientes pasos.
 
 Antes de comenzar, es necesario instalar:
 
-- **XAMPP** (incluye PHP y MySQL de forma sencilla)  
+- **XAMPP** (incluye PHP y MySQL de forma sencilla, aunque se puede instalar MySQL Server)  
   https://www.apachefriends.org/
 
 - **Composer** (gestor de dependencias de PHP)  

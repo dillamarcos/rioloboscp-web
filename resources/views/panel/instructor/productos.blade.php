@@ -250,8 +250,18 @@
                             <textarea name="descripcion_larga" x-model="producto.descripcion_larga"
                                 class="input-modal" placeholder="Descripción larga"></textarea>
 
-                            <input type="number" step="0.01" name="precio" x-model="producto.precio"
-                                class="input-modal" placeholder="Precio">
+                            <div class="relative">
+                                <input type="number"
+                                    step="0.01"
+                                    name="precio"
+                                    x-model="producto.precio"
+                                    class="input-modal pr-8"
+                                    placeholder="Precio">
+
+                                <span class="absolute right-3 p-1 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800">
+                                    €
+                                </span>
+                            </div>
 
                             <input type="file" name="imagen" class="input-modal cursor-pointer">
 
@@ -329,8 +339,18 @@
                             <textarea name="descripcion_larga" required
                                 class="input-modal" placeholder="Descripción larga"></textarea>
 
-                            <input type="number" step="0.01" name="precio" required
-                                class="input-modal" placeholder="Precio">
+                            <div class="relative">
+                                <input type="number"
+                                    step="0.01"
+                                    name="precio"
+                                    x-model="producto.precio"
+                                    class="input-modal pr-8"
+                                    placeholder="Precio">
+
+                                <span class="absolute right-3 p-1 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800">
+                                    €
+                                </span>
+                            </div>
 
                             <input type="file" name="imagen" class="input-modal cursor-pointer">
 
