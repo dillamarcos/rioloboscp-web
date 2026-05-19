@@ -2,8 +2,9 @@
 Proyecto TFG desarrollado con Laravel para la gestión y difusión del club Riolobos C.P.
 
 ## Tecnologías utilizadas
-- Laravel
+- Laravel PHP
 - Blade
+- HTML
 - Tailwind CSS
 - Alpine.js
 - MySQL
@@ -31,44 +32,29 @@ Para ejecutar este proyecto en cualquier ordenador, sigue los siguientes pasos.
 
 Antes de comenzar, es necesario instalar:
 
-- **XAMPP** (incluye PHP y MySQL de forma sencilla, aunque se puede instalar MySQL Server)  
-  https://www.apachefriends.org/
-
 - **Composer** (gestor de dependencias de PHP)  
   https://getcomposer.org/
 
 - **Node.js** (para compilar el frontend)  
   https://nodejs.org/
 
----
+- **MySQL Server** o un entorno como **XAMPP**  
+  https://www.mysql.com/  
+  https://www.apachefriends.org/
 
-### 2. Iniciar entorno local
 
-Abrir **XAMPP** y arrancar:
+### 2. Obtener el proyecto
 
-- Apache
-- MySQL
-
----
-
-### 3. Obtener el proyecto
-
-#### Opción A: ZIP (entrega del proyecto)
-Descomprimir el archivo en una carpeta del equipo.
-
-```bash
-cd proyecto_riolobos_cp
-```
-
-#### Opción B: GitHub
 ```bash
 git clone https://github.com/dillamarcos/rioloboscp-web.git
 cd rioloboscp-web
 ```
 
+Una vez clonado el repositorio, abrir el proyecto en VS Code. (Puedes ejecutar los próximos comandos desde su consola).
+
 ---
 
-### 4. Instalar dependencias del backend
+### 3. Instalar dependencias del backend
 
 ```bash
 composer install
@@ -76,7 +62,7 @@ composer install
 
 ---
 
-### 5. Instalar dependencias del frontend
+### 4. Instalar dependencias del frontend
 
 ```bash
 npm install
@@ -84,7 +70,7 @@ npm install
 
 ---
 
-### 6. Configurar variables de entorno
+### 5. Configurar variables de entorno
 
 Copiar el archivo de ejemplo:
 
@@ -100,27 +86,23 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-En entornos locales con XAMPP, el usuario `root` no tiene contraseña por defecto.
+En entornos locales, el usuario `root` no suele tener contraseña.
 
 ---
 
-### 7. Crear la base de datos
+### 6. Crear la base de datos
 
-Acceder a:
-
-```
-http://localhost/phpmyadmin
-```
-
-Y crear una base de datos llamada:
+Crear una base de datos llamada:
 
 ```
 riolobos_cp
 ```
 
+Esto puede hacerse desde herramientas como phpMyAdmin, DBeaver o MySQL Workbench
+
 ---
 
-### 8. Generar clave de la aplicación
+### 7. Generar clave de la aplicación
 
 ```bash
 php artisan key:generate
@@ -128,15 +110,27 @@ php artisan key:generate
 
 ---
 
-### 9. Ejecutar migraciones y datos de prueba
+### 8. Ejecutar migraciones y datos de prueba
+
+#### Opción A:
+
+Si se quieren rellenar las tablas con datos de ejemplo:
 
 ```bash
 php artisan migrate --seed
 ```
 
+#### Opción B:
+
+En caso de no utilizar migraciones, se puede importar directamente el archivo `.sql` incluido en el proyecto.
+
+Este archivo se encuentra en la carpeta:
+
+`scriptsql_riolobos/riolobos_cp.sql`
+
 ---
 
-### 10. Compilar assets del frontend
+### 9. Compilar assets del frontend
 
 ```bash
 npm run dev
@@ -144,7 +138,7 @@ npm run dev
 
 ---
 
-### 11. Iniciar servidor Laravel
+### 10. Iniciar servidor Laravel
 
 ```bash
 php artisan serve
@@ -152,7 +146,7 @@ php artisan serve
 
 ---
 
-### 12. Acceder a la aplicación
+### 11. Acceder a la aplicación
 
 Abrir en el navegador:
 
@@ -162,7 +156,7 @@ http://127.0.0.1:8000
 
 ---
 
-### 13. Usuario de prueba (administrador)
+### 12. Usuario de prueba (administrador)
 
 El sistema incluye datos de prueba generados con seeders.
 
@@ -177,3 +171,10 @@ Usuario administrador:
 📌 También es posible registrarse como nuevo usuario desde la aplicación.
 
 ---
+
+### 13. Permisos (si falla la carga de assets)
+
+En algunos entornos puede ser necesario ejecutar:
+
+```bash
+php artisan storage:link
