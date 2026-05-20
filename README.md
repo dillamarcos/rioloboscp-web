@@ -126,7 +126,7 @@ En caso de no utilizar migraciones, se puede importar directamente el archivo `.
 
 Este archivo se encuentra en la carpeta:
 
-`scriptsql_riolobos/riolobos_cp.sql`
+`Descargar_Proyecto/scriptsql_riolobos.sql`
 
 ---
 
