@@ -12,18 +12,18 @@
             <nav class="space-y-1">
 
                 @if(auth()->user()->rol === 'admin')
-                <div class="mb-4">
+                    <div class="mb-4">
 
-                    <p class="px-3 text-xs uppercase text-gray-500 dark:text-gray-400 mb-2">
-                        Administración
-                    </p>
+                        <p class="px-3 text-xs uppercase text-gray-500 dark:text-gray-400 mb-2">
+                            Administración
+                        </p>
 
-                    <a href="#"
-                        class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
-                        Usuarios
-                    </a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                            Usuarios
+                        </a>
 
-                </div>
+                    </div>
                 @endif
 
                 <p class="px-3 text-xs uppercase text-gray-500 dark:text-gray-400 mb-2">
@@ -32,44 +32,37 @@
 
                 <div x-data="{ open: {{ request()->routeIs('socios.*','solicitudes.*') ? 'true' : 'false' }} }" class="mb-2">
 
-                    <button @click="open = !open"
-                        class="w-full flex justify-between items-center px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                    <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
                         Socios
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
                     <div x-show="open" x-transition class="ml-3 mt-2 space-y-1">
 
-                        <a href="#"
-                            class="block px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <a href="#" class="block px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700">
                             Todos los socios
                         </a>
 
-                        <a href="{{ route('dashboard.solicitudes') }}"
-                            class="block px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <a href="{{ route('dashboard.solicitudes') }}" class="block px-3 py-1 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-700">
                             Solicitudes
                         </a>
 
                     </div>
                 </div>
 
-                <a href="#"
-                    class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
                     Partidos
                 </a>
 
-                <a href="#"
-                    class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
                     Jugadores
                 </a>
 
-                <a href="#"
-                    class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
                     Productos
                 </a>
 
-                <a href="#"
-                    class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
+                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">
                     Noticias
                 </a>
 
@@ -85,7 +78,7 @@
                 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
 
             @isset($header)
-            {{ $header }}
+                {{ $header }}
             @endisset
 
         </div>

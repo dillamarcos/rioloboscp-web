@@ -20,8 +20,7 @@
         <!-- FILTROS -->
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
 
-            <form method="GET"
-                class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:flex lg:flex-1 gap-4">
+            <form method="GET" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:flex lg:flex-1 gap-4">
 
                 <!-- BUSCAR -->
                 <input type="text"
@@ -96,18 +95,14 @@
 
                     <!-- FLECHA -->
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition" :class="{ 'rotate-180': open }"></i>
                     </div>
 
                 </div>
 
                 <!-- BOTÓN -->
-                <button type="submit"
-                    class="btn-primary w-full sm:w-auto">
-
+                <button type="submit" class="btn-primary w-full sm:w-auto">
                     Filtrar
-
                 </button>
 
             </form>
@@ -115,13 +110,9 @@
             <!-- NUEVO -->
             <div class="w-full lg:w-auto">
 
-                <button
-                    @click="$dispatch('open-create-jugador')"
-                    class="btn-primary w-full lg:w-auto whitespace-nowrap">
-
+                <button @click="$dispatch('open-create-jugador')" class="btn-primary w-full lg:w-auto whitespace-nowrap">
                     <i class="fa-solid fa-plus text-sm"></i>
                     Nuevo jugador
-
                 </button>
 
             </div>
@@ -148,142 +139,140 @@
 
                     @forelse($jugadores as $jugador)
 
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
 
-                        <!-- JUGADOR -->
-                        <td class="px-4 py-3 min-w-[300px]">
+                            <!-- JUGADOR -->
+                            <td class="px-4 py-3 min-w-[300px]">
 
-                            <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-3">
 
-                                <img src="{{ $jugador->imagen 
-                                    ? asset('storage/'.$jugador->imagen) 
-                                    : asset('images/default.png') }}"
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded object-contain flex-shrink-0">
+                                    <img src="{{ $jugador->imagen ? asset('storage/'.$jugador->imagen) : asset('images/default.png') }}"
+                                        class="w-10 h-10 sm:w-12 sm:h-12 rounded object-contain flex-shrink-0">
 
-                                <div>
+                                    <div>
 
-                                    <p class="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap">
-                                        {{ $jugador->nombre }} {{ $jugador->apellidos }}
-                                    </p>
+                                        <p class="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap">
+                                            {{ $jugador->nombre }} {{ $jugador->apellidos }}
+                                        </p>
 
-                                    <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
-                                        #{{ $jugador->dorsal }} - {{ ucfirst($jugador->posicion) }}
-                                    </p>
+                                        <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">
+                                            #{{ $jugador->dorsal }} - {{ ucfirst($jugador->posicion) }}
+                                        </p>
 
-                                </div>
-
-                            </div>
-
-                        </td>
-
-                        <!-- NACIMIENTO -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ \Carbon\Carbon::parse($jugador->fecha_nacimiento)->format('d/m/Y') }}
-                        </td>
-
-                        <!-- ALTURA -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $jugador->altura }} m
-                        </td>
-
-                        <!-- GOLES -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $jugador->goles }}
-                        </td>
-
-                        <!-- TARJETAS -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-
-                            <div class="flex items-center gap-4">
-
-                                <!-- AMARILLAS -->
-                                <div class="flex items-center gap-1">
-
-                                    <div class="w-4 h-6 rounded-sm bg-yellow-400 border border-yellow-500 shadow-sm"></div>
-
-                                    <span class="text-xs sm:text-sm font-medium">
-                                        {{ $jugador->amarillas }}
-                                    </span>
+                                    </div>
 
                                 </div>
 
-                                <!-- ROJAS -->
-                                <div class="flex items-center gap-1 ml-2">
+                            </td>
 
-                                    <div class="w-4 h-6 rounded-sm bg-red-500 border border-red-600 shadow-sm"></div>
+                            <!-- NACIMIENTO -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ \Carbon\Carbon::parse($jugador->fecha_nacimiento)->format('d/m/Y') }}
+                            </td>
 
-                                    <span class="text-xs sm:text-sm font-medium">
-                                        {{ $jugador->rojas }}
-                                    </span>
+                            <!-- ALTURA -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ $jugador->altura }} m
+                            </td>
+
+                            <!-- GOLES -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ $jugador->goles }}
+                            </td>
+
+                            <!-- TARJETAS -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+
+                                <div class="flex items-center gap-4">
+
+                                    <!-- AMARILLAS -->
+                                    <div class="flex items-center gap-1">
+
+                                        <div class="w-4 h-6 rounded-sm bg-yellow-400 border border-yellow-500 shadow-sm"></div>
+
+                                        <span class="text-xs sm:text-sm font-medium">
+                                            {{ $jugador->amarillas }}
+                                        </span>
+
+                                    </div>
+
+                                    <!-- ROJAS -->
+                                    <div class="flex items-center gap-1 ml-2">
+
+                                        <div class="w-4 h-6 rounded-sm bg-red-500 border border-red-600 shadow-sm"></div>
+
+                                        <span class="text-xs sm:text-sm font-medium">
+                                            {{ $jugador->rojas }}
+                                        </span>
+
+                                    </div>
 
                                 </div>
 
-                            </div>
+                            </td>
 
-                        </td>
+                            <!-- ACCIONES -->
+                            <td class="px-4 py-3 text-right flex justify-end gap-1">
 
-                        <!-- ACCIONES -->
-                        <td class="px-4 py-3 text-right flex justify-end gap-1">
+                                @php
+                                    $data = [
+                                        'id' => $jugador->id,
+                                        'nombre' => $jugador->nombre,
+                                        'apellidos' => $jugador->apellidos,
+                                        'dorsal' => $jugador->dorsal,
+                                        'posicion' => $jugador->posicion,
+                                        'fecha_nacimiento' => $jugador->fecha_nacimiento,
+                                        'altura' => $jugador->altura,
+                                        'goles' => $jugador->goles,
+                                        'amarillas' => $jugador->amarillas,
+                                        'rojas' => $jugador->rojas,
+                                        'imagen' => $jugador->imagen,
+                                    ];
+                                @endphp
 
-                            @php
-                            $data = [
-                            'id' => $jugador->id,
-                            'nombre' => $jugador->nombre,
-                            'apellidos' => $jugador->apellidos,
-                            'dorsal' => $jugador->dorsal,
-                            'posicion' => $jugador->posicion,
-                            'fecha_nacimiento' => $jugador->fecha_nacimiento,
-                            'altura' => $jugador->altura,
-                            'goles' => $jugador->goles,
-                            'amarillas' => $jugador->amarillas,
-                            'rojas' => $jugador->rojas,
-                            'imagen' => $jugador->imagen,
-                            ];
-                            @endphp
+                                <!-- EDITAR -->
+                                <button
+                                    @click='$dispatch("open-edit-jugador", @json($data))'
+                                    class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
 
-                            <!-- EDITAR -->
-                            <button
-                                @click='$dispatch("open-edit-jugador", @json($data))'
-                                class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
-
-                                <i class="fa-solid fa-pen-to-square"></i>
-
-                            </button>
-
-                            <!-- ELIMINAR -->
-                            <form id="delete-jugador-{{ $jugador->id }}"
-                                method="POST"
-                                action="{{ route('panel.instructor.jugadores.destroy', $jugador->id) }}">
-
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="button"
-                                    @click="$dispatch('open-confirm', {
-                                        title: 'Eliminar jugador',
-                                        message: '¿Seguro que quieres eliminar este jugador?',
-                                        action: '#delete-jugador-{{ $jugador->id }}'
-                                    })"
-                                    class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
-
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-pen-to-square"></i>
 
                                 </button>
 
-                            </form>
+                                <!-- ELIMINAR -->
+                                <form id="delete-jugador-{{ $jugador->id }}"
+                                    method="POST"
+                                    action="{{ route('panel.instructor.jugadores.destroy', $jugador->id) }}">
 
-                        </td>
+                                    @csrf
+                                    @method('DELETE')
 
-                    </tr>
+                                    <button type="button"
+                                        @click="$dispatch('open-confirm', {
+                                            title: 'Eliminar jugador',
+                                            message: '¿Seguro que quieres eliminar este jugador?',
+                                            action: '#delete-jugador-{{ $jugador->id }}'
+                                        })"
+                                        class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
+
+                                        <i class="fa-solid fa-trash"></i>
+
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
 
                     @empty
 
-                    <tr>
-                        <td colspan="6"
-                            class="text-center py-6 text-gray-500">
-                            No hay jugadores
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="6"
+                                class="text-center py-6 text-gray-500">
+                                No hay jugadores
+                            </td>
+                        </tr>
 
                     @endforelse
 
@@ -310,7 +299,7 @@
                 }
             }"
 
-                    x-on:open-edit-jugador.window="
+            x-on:open-edit-jugador.window="
                 open = true;
                 jugador = $event.detail;
 
@@ -328,9 +317,7 @@
                 @click="open=false"></div>
 
             <!-- MODAL -->
-            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-                w-full max-w-sm sm:max-w-md md:max-w-2xl
-                p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between mb-4">
@@ -455,8 +442,7 @@
                     <!-- IMAGEN -->
                     <div class="flex items-center gap-4 mt-4">
 
-                        <img :src="preview"
-                            class="w-20 h-20 rounded-xl object-cover border border-gray-300 dark:border-gray-600 shadow-sm p-1">
+                        <img :src="preview" class="w-20 h-20 rounded-xl object-cover border border-gray-300 dark:border-gray-600 shadow-sm p-1">
 
                         <input type="file"
                             name="imagen"
@@ -517,9 +503,7 @@
                 @click="open=false"></div>
 
             <!-- MODAL -->
-            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-                w-full max-w-sm sm:max-w-md md:max-w-2xl
-                p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between mb-4">
@@ -529,8 +513,7 @@
                         <i class="fa-solid fa-user-plus ml-2"></i>
                     </h2>
 
-                    <button @click="open=false"
-                        class="hover:scale-110 hover:text-red-600 transition">
+                    <button @click="open=false" class="hover:scale-110 hover:text-red-600 transition">
 
                         <i class="fa-solid fa-xmark"></i>
 
@@ -640,8 +623,7 @@
                     <div class="flex items-center gap-4 mt-4">
 
                         <template x-if="preview">
-                            <img :src="preview"
-                                class="w-20 h-20 rounded-xl object-cover border border-gray-300 dark:border-gray-600 shadow-sm p-1">
+                            <img :src="preview" class="w-20 h-20 rounded-xl object-cover border border-gray-300 dark:border-gray-600 shadow-sm p-1">
                         </template>
 
                         <input type="file"
@@ -654,19 +636,12 @@
                     <!-- BOTONES -->
                     <div class="flex justify-end gap-2 mt-5">
 
-                        <button type="button"
-                            @click="open=false"
-                            class="btn-secondary">
-
+                        <button type="button" @click="open=false" class="btn-secondary">
                             Cancelar
-
                         </button>
 
-                        <button type="submit"
-                            class="btn-primary">
-
+                        <button type="submit" class="btn-primary">
                             Crear
-
                         </button>
 
                     </div>

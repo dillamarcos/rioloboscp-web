@@ -44,8 +44,7 @@
 
                 <!-- IMAGEN -->
                 <div class="lg:w-2/5 flex justify-center">
-                    <img src="{{ asset('storage/' . $producto->imagen) }}"
-                        class="w-full max-w-sm object-cover rounded-lg">
+                    <img src="{{ asset('storage/' . $producto->imagen) }}" class="w-full max-w-sm object-cover rounded-lg">
                 </div>
 
                 <!-- INFO -->
@@ -69,16 +68,16 @@
                             </span>
 
                             @php
-                            $esSocio = auth()->user()?->socio ?? false;
-                            $descuento = $esSocio ? $producto->precio * 0.05 : 0;
-                            $precioFinal = $producto->precio - $descuento;
+                                $esSocio = auth()->user()?->socio ?? false;
+                                $descuento = $esSocio ? $producto->precio * 0.05 : 0;
+                                $precioFinal = $producto->precio - $descuento;
                             @endphp
 
                             @if($esSocio)
-                            <div class="text-green-600 text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-tag"></i>
-                                Precio socio: {{ number_format($precioFinal, 2) }} €
-                            </div>
+                                <div class="text-green-600 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-tag"></i>
+                                    Precio socio: {{ number_format($precioFinal, 2) }} €
+                                </div>
                             @endif
 
                         </div>
@@ -94,8 +93,8 @@
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
 
                         @php
-                        $isFav = auth()->check() && auth()->user()->favoritos->contains($producto->id);
-                        $inCart = auth()->check() && auth()->user()->carrito->contains('producto_id', $producto->id);
+                            $isFav = auth()->check() && auth()->user()->favoritos->contains($producto->id);
+                            $inCart = auth()->check() && auth()->user()->carrito->contains('producto_id', $producto->id);
                         @endphp
 
                         <!-- FAVORITO -->
@@ -107,10 +106,10 @@
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600' }}">
 
                                 @if($isFav)
-                                <i class="fa-solid fa-heart group-hover:hidden"></i>
-                                <i class="fa-solid fa-heart-crack hidden group-hover:inline"></i>
+                                    <i class="fa-solid fa-heart group-hover:hidden"></i>
+                                    <i class="fa-solid fa-heart-crack hidden group-hover:inline"></i>
                                 @else
-                                <i class="fa-regular fa-heart group-hover:text-red-500"></i>
+                                    <i class="fa-regular fa-heart group-hover:text-red-500"></i>
                                 @endif
 
                                 <span>
@@ -128,10 +127,10 @@
                                     : 'bg-indigo-600 text-white hover:bg-indigo-500' }}">
 
                                 @if($inCart)
-                                <i class="fa-solid fa-cart-shopping group-hover:hidden"></i>
-                                <i class="fa-solid fa-cart-arrow-down hidden group-hover:inline"></i>
+                                    <i class="fa-solid fa-cart-shopping group-hover:hidden"></i>
+                                    <i class="fa-solid fa-cart-arrow-down hidden group-hover:inline"></i>
                                 @else
-                                <i class="fa-solid fa-cart-plus"></i>
+                                    <i class="fa-solid fa-cart-plus"></i>
                                 @endif
 
                                 <span>

@@ -2,9 +2,7 @@
 
     <div class="space-y-6 px-4 md:px-8">
 
-        {{-- =======================
-        TÍTULO
-        ======================== --}}
+        <!-- TÍTULO -->
         <div class="text-center md:text-start">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-100 ml-0 md:ml-1">
                 Clasificación
@@ -60,14 +58,12 @@
 
         </form>
 
-        {{-- =======================
-        TABLA
-        ======================== --}}
+        <!-- TABLA -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow overflow-x-auto scroll-smooth">
 
             <table class="min-w-[700px] w-full text-sm md:text-base text-center">
 
-                {{-- HEADER --}}
+                <!-- CABECERA -->
                 <thead class="bg-indigo-700 text-white">
                     <tr>
                         <th class="p-3">#</th>
@@ -83,7 +79,7 @@
                     </tr>
                 </thead>
 
-                {{-- BODY --}}
+                <!-- BODY -->
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
 
                     @foreach($clasificacion as $i => $equipo)
@@ -137,14 +133,10 @@
 
         </div>
 
-        {{-- =======================
-        PARTIDOS
-        ======================== --}}
+        <!-- ÚLTIMO Y PRÓXIMO PARTIDO -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-            {{-- =======================
-            ÚLTIMO PARTIDO
-            ======================== --}}
+            <!-- ÚLTIMO PARTIDO -->
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mt-2">
 
                 <h3 class="font-bold mb-3 text-gray-800 dark:text-gray-100">
@@ -157,7 +149,7 @@
 
                 <div class="flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 text-sm md:text-base font-semibold">
 
-                    {{-- LOCAL --}}
+                    <!-- LOCAL -->
                     <div class="flex items-center gap-2">
 
                         <img src="{{ $ultimoPartido->equipoLocal?->escudo 
@@ -174,7 +166,7 @@
                         {{ $ultimoPartido->goles_local ?? 0 }} - {{ $ultimoPartido->goles_visitante ?? 0 }}
                     </span>
 
-                    {{-- VISITANTE --}}
+                    <!-- VISITANTE -->
                     <div class="flex items-center gap-2">
 
                         <span class="text-gray-800 dark:text-gray-200">
@@ -202,9 +194,7 @@
 
             </div>
 
-            {{-- =======================
-            PRÓXIMO PARTIDO
-            ======================== --}}
+            <!-- PRÓXIMO PARTIDO -->
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mt-2">
 
                 <h3 class="font-bold mb-3 text-gray-800 dark:text-gray-100">
@@ -217,7 +207,7 @@
 
                 <div class="flex items-center justify-center text-gray-800 dark:text-gray-200 text-sm md:text-base gap-3 font-semibold">
 
-                    {{-- LOCAL --}}
+                    <!-- LOCAL -->
                     <div class="flex items-center gap-2">
 
                         <img src="{{ $proximoPartido->equipoLocal?->escudo 
@@ -234,7 +224,7 @@
                         vs
                     </span>
 
-                    {{-- VISITANTE --}}
+                    <!-- VISITANTE -->
                     <div class="flex items-center gap-2">
 
                         <span class="text-gray-800 dark:text-gray-200">

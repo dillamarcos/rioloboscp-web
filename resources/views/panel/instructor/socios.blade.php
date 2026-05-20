@@ -35,8 +35,8 @@
                     <select name="estado"
                         @click="open = !open"
                         @blur="open = false"
-                        class="appearance-none w-full px-4 pr-10 py-2 rounded-lg border border-gray-300 dark:border-gray-700 
-                        bg-white dark:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer">
+                        class="appearance-none w-full px-4 pr-10 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 
+                        focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer">
 
                         <option value="">Todos los estados</option>
                         <option value="activo" @selected(request('estado')=='activo' )>Activo</option>
@@ -46,8 +46,7 @@
 
                     <!-- FLECHA -->
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200" :class="{ 'rotate-180': open }"></i>
                     </div>
 
                 </div>
@@ -69,26 +68,20 @@
 
                     <!-- FLECHA -->
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200" :class="{ 'rotate-180': open }"></i>
                     </div>
 
                 </div>
 
                 <!-- BOTÓN -->
-                <button type="submit"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg 
-                    hover:bg-indigo-500 hover:scale-105 active:scale-95 transition">
+                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 hover:scale-105 active:scale-95 transition">
                     Filtrar
                 </button>
 
             </form>
 
             <!-- BOTÓN NUEVO -->
-            <button
-                @click="$dispatch('open-create-socio')"
-                class="px-4 py-2 bg-indigo-600 text-white rounded-lg 
-                hover:bg-indigo-500 hover:scale-105 active:scale-95 transition whitespace-nowrap">
+            <button @click="$dispatch('open-create-socio')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 hover:scale-105 active:scale-95 transition whitespace-nowrap">
                 <i class="fa-solid fa-plus text-sm"></i>
                 Nuevo socio
             </button>

@@ -21,8 +21,7 @@
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
 
             <!-- FORM -->
-            <form method="GET"
-                class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-1 gap-4">
+            <form method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-1 gap-4">
 
                 <!-- BUSCADOR -->
                 <input type="text" name="buscar"
@@ -38,16 +37,16 @@
                         class="input-modal appearance-none pr-10 w-full cursor-pointer">
 
                         <option value="">Todas las categorías</option>
+
                         @foreach($categorias as $categoria)
-                        <option value="{{ $categoria->id }}" @selected(request('categoria')==$categoria->id)>
-                            {{ $categoria->nombre }}
-                        </option>
+                            <option value="{{ $categoria->id }}" @selected(request('categoria')==$categoria->id)>
+                                {{ $categoria->nombre }}
+                            </option>
                         @endforeach
                     </select>
 
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition" :class="{ 'rotate-180': open }"></i>
                     </div>
                 </div>
 
@@ -64,14 +63,12 @@
                     </select>
 
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition" :class="{ 'rotate-180': open }"></i>
                     </div>
                 </div>
 
                 <!-- BOTÓN FILTRAR -->
-                <button type="submit"
-                    class="btn-primary w-full sm:w-auto lg:self-end">
+                <button type="submit" class="btn-primary w-full sm:w-auto lg:self-end">
                     Filtrar
                 </button>
 
@@ -79,9 +76,7 @@
 
             <!-- BOTÓN NUEVO -->
             <div class="w-full lg:w-auto">
-                <button
-                    @click="$dispatch('open-create-producto')"
-                    class="btn-primary w-full lg:w-auto whitespace-nowrap">
+                <button @click="$dispatch('open-create-producto')" class="btn-primary w-full lg:w-auto whitespace-nowrap">
                     <i class="fa-solid fa-plus text-sm"></i>
                     Nuevo producto
                 </button>
@@ -108,95 +103,93 @@
 
                     @forelse($productos as $producto)
 
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
 
-                        <!-- PRODUCTO -->
-                        <td class="px-4 py-3 align-middle">
-                            <div class="flex items-center gap-3">
+                            <!-- PRODUCTO -->
+                            <td class="px-4 py-3 align-middle">
+                                <div class="flex items-center gap-3">
 
-                                <img src="{{ $producto->imagen ? asset('storage/'.$producto->imagen) : asset('images/default.png') }}"
-                                    class="w-10 h-10 object-cover rounded">
+                                    <img src="{{ $producto->imagen ? asset('storage/'.$producto->imagen) : asset('images/default.png') }}"
+                                        class="w-10 h-10 object-cover rounded">
 
-                                <div>
-                                    <p class="font-medium">
-                                        {{ $producto->nombre }}
-                                    </p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
-                                        {{ $producto->descripcion_corta }}
-                                    </p>
+                                    <div>
+                                        <p class="font-medium">
+                                            {{ $producto->nombre }}
+                                        </p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+                                            {{ $producto->descripcion_corta }}
+                                        </p>
+                                    </div>
+
                                 </div>
+                            </td>
 
-                            </div>
-                        </td>
+                            <!-- CATEGORÍA -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ $producto->categoria->nombre }}
+                            </td>
 
-                        <!-- CATEGORÍA -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $producto->categoria->nombre }}
-                        </td>
+                            <!-- PRECIO -->
+                            <td class="px-4 py-3 font-semibold whitespace-nowrap">
+                                {{ $producto->precio }} €
+                            </td>
 
-                        <!-- PRECIO -->
-                        <td class="px-4 py-3 font-semibold whitespace-nowrap">
-                            {{ $producto->precio }} €
-                        </td>
+                            <!-- ESTADO -->
+                            <td class="px-4 py-3">
+                                <span class="px-2 py-1 text-xs rounded
+                                    {{ $producto->activo ? 'bg-green-200 dark:bg-green-600 text-green-600 dark:text-green-200' : 'bg-red-200 dark:bg-red-600 text-red-600 dark:text-red-200' }}">
+                                    {{ $producto->activo ? 'Activo' : 'Inactivo' }}
+                                </span>
+                            </td>
 
-                        <!-- ESTADO -->
-                        <td class="px-4 py-3">
-                            <span class="px-2 py-1 text-xs rounded
-                                {{ $producto->activo ? 'bg-green-200 dark:bg-green-600 text-green-600 dark:text-green-200' : 'bg-red-200 dark:bg-red-600 text-red-600 dark:text-red-200' }}">
-                                {{ $producto->activo ? 'Activo' : 'Inactivo' }}
-                            </span>
-                        </td>
+                            <!-- ACCIONES -->
+                            <td class="px-4 py-3 text-right flex justify-end gap-1">
 
-                        <!-- ACCIONES -->
-                        <td class="px-4 py-3 text-right flex justify-end gap-1">
+                                @php
+                                    $data = [
+                                        'id' => $producto->id,
+                                        'nombre' => $producto->nombre,
+                                        'descripcion_corta' => $producto->descripcion_corta,
+                                        'descripcion_larga' => $producto->descripcion_larga,
+                                        'precio' => $producto->precio,
+                                        'activo' => $producto->activo,
+                                        'categoria_id' => $producto->categoria_id,
+                                    ];
+                                @endphp
 
-                            @php
-                            $data = [
-                            'id' => $producto->id,
-                            'nombre' => $producto->nombre,
-                            'descripcion_corta' => $producto->descripcion_corta,
-                            'descripcion_larga' => $producto->descripcion_larga,
-                            'precio' => $producto->precio,
-                            'activo' => $producto->activo,
-                            'categoria_id' => $producto->categoria_id,
-                            ];
-                            @endphp
-
-                            <!-- EDITAR -->
-                            <button
-                                @click='$dispatch("open-edit-producto", @json($data))'
-                                class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-
-                            <!-- ELIMINAR -->
-                            <form id="delete-producto-{{ $producto->id }}"
-                                method="POST"
-                                action="{{ route('panel.instructor.productos.destroy', $producto->id) }}">
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="button"
-                                    @click="$dispatch('open-confirm', {
-                                        title: 'Eliminar producto',
-                                        message: '¿Seguro que quieres eliminar este producto?',
-                                        action: '#delete-producto-{{ $producto->id }}'
-                                    })"
-                                    class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
-                                    <i class="fa-solid fa-trash"></i>
+                                <!-- EDITAR -->
+                                <button @click='$dispatch("open-edit-producto", @json($data))' class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                            </form>
 
-                        </td>
+                                <!-- ELIMINAR -->
+                                <form id="delete-producto-{{ $producto->id }}"
+                                    method="POST"
+                                    action="{{ route('panel.instructor.productos.destroy', $producto->id) }}">
+                                    @csrf
+                                    @method('DELETE')
 
-                    </tr>
+                                    <button type="button"
+                                        @click="$dispatch('open-confirm', {
+                                            title: 'Eliminar producto',
+                                            message: '¿Seguro que quieres eliminar este producto?',
+                                            action: '#delete-producto-{{ $producto->id }}'
+                                        })"
+                                        class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+
+                        </tr>
 
                     @empty
-                    <tr>
-                        <td colspan="5" class="text-center py-6 text-gray-500">
-                            No hay productos
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="5" class="text-center py-6 text-gray-500">
+                                No hay productos
+                            </td>
+                        </tr>
                     @endforelse
 
                 </tbody>
@@ -218,8 +211,7 @@
                 <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" @click="open=false"></div>
 
                 <!-- MODAL -->
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[92%] sm:w-full max-w-sm sm:max-w-md md:max-w-lg
-                    p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[92%] sm:w-full max-w-sm sm:max-w-md md:max-w-lg p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                     <!-- HEADER -->
                     <div class="flex items-center justify-between mb-4">
@@ -268,7 +260,7 @@
                             <!-- CATEGORÍA -->
                             <select name="categoria_id" x-model="producto.categoria_id" class="input-modal cursor-pointer">
                                 @foreach($categorias as $cat)
-                                <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
+                                    <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
                                 @endforeach
                             </select>
 
@@ -358,7 +350,7 @@
                             <select name="categoria_id" required class="input-modal cursor-pointer">
                                 <option value="">Seleccionar categoría</option>
                                 @foreach($categorias as $cat)
-                                <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
+                                    <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
                                 @endforeach
                             </select>
 

@@ -51,7 +51,7 @@ class ProfileController extends Controller
                 $user->foto_perfil = $path;
             }
 
-            // 4. Guardamos los cambios (ya sea de texto o de foto)
+            // 4. Guardamos los cambios
             $user->save();
 
             // 5. Manejo de verificación de email si cambió

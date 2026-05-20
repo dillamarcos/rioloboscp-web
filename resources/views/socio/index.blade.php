@@ -37,32 +37,28 @@
                 <div class="md:w-1/4 flex flex-col justify-center -mt-10 gap-4">
 
                     <!-- IMAGEN -->
-                    <img src="{{ asset('images/socio.jpg') }}"
-                        class="hidden md:block max-h-[220px] w-auto object-contain rounded-lg mt-8">
+                    <img src="{{ asset('images/socio.jpg') }}" class="hidden md:block max-h-[220px] w-auto object-contain rounded-lg mt-8">
 
                     <!-- BOTÓN -->
                     @auth
-                    @if(auth()->user()->socio)
-                    <button
-                        class="w-full bg-gray-400 text-white px-4 py-2 mt-8 md:mt-0 rounded-lg cursor-not-allowed opacity-80">
-                        Ya eres socio
-                        <i class="fa-solid fa-check ml-1"></i>
-                    </button>
-                    @else
-                    <a href="{{ route('socio.create') }}"
-                        class="w-full text-center bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition hover:scale-105 shadow">
-                        Hazte socio
-                        <i class="fa-solid fa-user-plus ml-1"></i>
-                    </a>
-                    @endif
+                        @if(auth()->user()->socio)
+                            <button class="w-full bg-gray-400 text-white px-4 py-2 mt-8 md:mt-0 rounded-lg cursor-not-allowed opacity-80">
+                                Ya eres socio
+                                <i class="fa-solid fa-check ml-1"></i>
+                            </button>
+                        @else
+                            <a href="{{ route('socio.create') }}" class="w-full text-center bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition hover:scale-105 shadow">
+                                Hazte socio
+                                <i class="fa-solid fa-user-plus ml-1"></i>
+                            </a>
+                        @endif
                     @endauth
 
                     @guest
-                    <a href="{{ route('socio.create') }}"
-                        class="w-full text-center bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition hover:scale-105 shadow">
-                        Hazte socio
-                        <i class="fa-solid fa-user-plus ml-1"></i>
-                    </a>
+                        <a href="{{ route('socio.create') }}" class="w-full text-center bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition hover:scale-105 shadow">
+                            Hazte socio
+                            <i class="fa-solid fa-user-plus ml-1"></i>
+                        </a>
                     @endguest
 
                 </div>
@@ -117,43 +113,43 @@
 
         <!-- CARD: ÁREA SOCIO -->
         @auth
-        @if(auth()->user()->socio)
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-600 p-6">
+            @if(auth()->user()->socio)
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-600 p-6">
 
-            <!-- TÍTULO -->
-            <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">
-                Área de socio
-            </h3>
+                    <!-- TÍTULO -->
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">
+                        Área de socio
+                    </h3>
 
-            <!-- SEPARADOR FULL WIDTH -->
-            <div class="h-px bg-gray-300 dark:bg-gray-600 my-3"></div>
+                    <!-- SEPARADOR FULL WIDTH -->
+                    <div class="h-px bg-gray-300 dark:bg-gray-600 my-3"></div>
 
-            <!-- CONTENIDO -->
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <!-- CONTENIDO -->
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
 
-                <!-- TEXTO -->
-                <div class="md:w-2/3">
-                    <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
-                        Desde aquí puedes consultar toda tu información como socio:
-                        estado de tu cuota, fecha de alta, ventajas activas y datos de tu suscripción.
+                        <!-- TEXTO -->
+                        <div class="md:w-2/3">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
+                                Desde aquí puedes consultar toda tu información como socio:
+                                estado de tu cuota, fecha de alta, ventajas activas y datos de tu suscripción.
 
-                        También podrás gestionar tu perfil de socio de forma rápida y sencilla en cualquier momento.
-                    </p>
+                                También podrás gestionar tu perfil de socio de forma rápida y sencilla en cualquier momento.
+                            </p>
+                        </div>
+
+                        <!-- BOTÓN -->
+                        <div class="md:w-1/3 flex md:justify-end">
+                            <a href="{{ route('socio.show') }}"
+                                class="w-full md:w-auto text-center md:text-sm lg:text-base bg-indigo-700 hover:bg-indigo-600 text-white px-5 py-2 rounded-lg transition hover:scale-105 shadow">
+                                Ir a mi área de socio
+                                <i class="fa-solid fa-users ml-1"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
                 </div>
-
-                <!-- BOTÓN -->
-                <div class="md:w-1/3 flex md:justify-end">
-                    <a href="{{ route('socio.show') }}"
-                        class="w-full md:w-auto text-center md:text-sm lg:text-base bg-indigo-700 hover:bg-indigo-600 text-white px-5 py-2 rounded-lg transition hover:scale-105 shadow">
-                        Ir a mi área de socio
-                        <i class="fa-solid fa-users ml-1"></i>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-        @endif
+            @endif
         @endauth
 
     </div>

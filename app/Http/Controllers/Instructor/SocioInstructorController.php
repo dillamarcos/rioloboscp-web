@@ -42,6 +42,14 @@ class SocioInstructorController extends Controller
 
     public function store(Request $request)
     {
+        // Comprobación de que el DNI no exista ya en BBDD (único en socios)
+        $existeDni = Socio::where('dni', $request->dni)->exists();
+        if ($existeDni) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ya existe un socio con ese DNI');
+        }
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -77,6 +85,14 @@ class SocioInstructorController extends Controller
     public function update(Request $request, int $id)
     {
         $socio = Socio::with('user')->findOrFail($id);
+
+        // Comprobación de que el DNI no exista ya en BBDD (sin contar al socio que se está editando)
+        $existeDni = Socio::where('dni', $request->dni)->where('id', '!=', $socio->id)->exists();
+        if ($existeDni) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ya existe un socio con ese DNI');
+        }
 
         $request->validate([
             'nombre' => 'required|string|max:255',

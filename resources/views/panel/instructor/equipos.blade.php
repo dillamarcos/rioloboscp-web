@@ -19,8 +19,7 @@
 
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-6">
 
-            <form method="GET"
-                class="flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full lg:flex-1">
+            <form method="GET" class="flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full lg:flex-1">
 
                 <div class="w-full md:flex-1 min-w-[200px]">
                     <input type="text"
@@ -39,17 +38,16 @@
                         <option value="">Todas las temporadas</option>
 
                         @foreach($temporadas as $temporada)
-                        <option value="{{ $temporada->id }}"
-                            @selected(request('temporada_id')==$temporada->id)>
-                            {{ $temporada->nombre }}
-                        </option>
+                            <option value="{{ $temporada->id }}"
+                                @selected(request('temporada_id')==$temporada->id)>
+                                {{ $temporada->nombre }}
+                            </option>
                         @endforeach
 
                     </select>
 
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition" :class="{ 'rotate-180': open }"></i>
                     </div>
                 </div>
 
@@ -87,13 +85,13 @@
             <div class="flex flex-row items-center justify-between gap-4">
 
                 @php
-                $pivot = null;
+                    $pivot = null;
 
-                if ($temporadaSeleccionada) {
-                $pivot = $temporadaSeleccionada->equipos()
-                ->wherePivot('temporada_id', $temporadaSeleccionada->id)
-                ->first()?->pivot;
-                }
+                    if ($temporadaSeleccionada) {
+                        $pivot = $temporadaSeleccionada->equipos()
+                        ->wherePivot('temporada_id', $temporadaSeleccionada->id)
+                        ->first()?->pivot;
+                    }
                 @endphp
 
                 <!-- INFO -->
@@ -121,12 +119,12 @@
                     <!-- EDITAR -->
                     <button
                         @click="$dispatch('open-edit-temporada', {
-                    id: {{ $temporadaSeleccionada->id }},
-                    nombre: '{{ $temporadaSeleccionada->nombre }}',
-                    fecha_inicio: '{{ $temporadaSeleccionada->fecha_inicio }}',
-                    fecha_fin: '{{ $temporadaSeleccionada->fecha_fin }}',
-                    activa: {{ $temporadaSeleccionada->activa ? 1 : 0 }}
-                })"
+                            id: {{ $temporadaSeleccionada->id }},
+                            nombre: '{{ $temporadaSeleccionada->nombre }}',
+                            fecha_inicio: '{{ $temporadaSeleccionada->fecha_inicio }}',
+                            fecha_fin: '{{ $temporadaSeleccionada->fecha_fin }}',
+                            activa: {{ $temporadaSeleccionada->activa ? 1 : 0 }}
+                        })"
                         class="w-9 h-9 flex items-center justify-center text-indigo-600 hover:scale-105 transition">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
@@ -140,10 +138,10 @@
 
                         <button type="button"
                             @click="$dispatch('open-confirm', {
-                        title: 'Eliminar temporada',
-                        message: '¿Seguro que quieres eliminar esta temporada?',
-                        action: '#delete-temporada-{{ $temporadaSeleccionada->id }}'
-                    })"
+                                title: 'Eliminar temporada',
+                                message: '¿Seguro que quieres eliminar esta temporada?',
+                                action: '#delete-temporada-{{ $temporadaSeleccionada->id }}'
+                            })"
                             class="w-9 h-9 flex items-center justify-center text-red-600 hover:scale-105 transition">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -176,9 +174,9 @@
                     @forelse($equipos as $equipo)
 
                     @php
-                    $pivot = $equipo->temporadas
-                    ->where('id', $temporadaSeleccionada?->id)
-                    ->first()?->pivot;
+                        $pivot = $equipo->temporadas
+                        ->where('id', $temporadaSeleccionada?->id)
+                        ->first()?->pivot;
                     @endphp
 
                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
@@ -217,20 +215,18 @@
                             <div class="flex justify-end gap-1 sm:gap-2">
 
                                 @php
-                                $data = [
-                                'id' => $equipo->id,
-                                'nombre' => $equipo->nombre,
-                                'descripcion' => $equipo->descripcion,
-                                'localizacion' => $equipo->localizacion,
-                                'entrenador' => $equipo->entrenador,
-                                'escudo' => $equipo->escudo ? asset('storage/'.$equipo->escudo) : null,
-                                ];
+                                    $data = [
+                                        'id' => $equipo->id,
+                                        'nombre' => $equipo->nombre,
+                                        'descripcion' => $equipo->descripcion,
+                                        'localizacion' => $equipo->localizacion,
+                                        'entrenador' => $equipo->entrenador,
+                                        'escudo' => $equipo->escudo ? asset('storage/'.$equipo->escudo) : null,
+                                    ];
                                 @endphp
 
                                 <!-- EDITAR -->
-                                <button
-                                    @click='$dispatch("open-edit-equipo", @json($data))'
-                                    class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 transition">
+                                <button @click='$dispatch("open-edit-equipo", @json($data))' class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 transition">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
 
@@ -242,10 +238,10 @@
 
                                     <button type="button"
                                         @click="$dispatch('open-confirm', {
-                                title: 'Eliminar equipo de temporada',
-                                message: '¿Seguro que quieres quitar este equipo de la temporada?',
-                                action: '#remove-equipo-{{ $equipo->id }}'
-                            })"
+                                            title: 'Eliminar equipo de temporada',
+                                            message: '¿Seguro que quieres quitar este equipo de la temporada?',
+                                            action: '#remove-equipo-{{ $equipo->id }}'
+                                        })"
                                         class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 transition">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
@@ -288,8 +284,7 @@
                         Asignar equipo a temporada<i class="fa-solid fa-people-group ml-2"></i>
                     </h2>
 
-                    <button @click="open=false"
-                        class="text-gray-400 hover:text-red-600 transition">
+                    <button @click="open=false" class="text-gray-400 hover:text-red-600 transition">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
@@ -302,12 +297,12 @@
                         <option value="">Seleccionar temporada</option>
 
                         @foreach($temporadas as $temp)
-                        <option value="{{ $temp->id }}"
-                            @selected(
-                            old('temporada_id', $temporadaActiva?->id) == $temp->id
-                            )>
-                            {{ $temp->nombre }}
-                        </option>
+                            <option value="{{ $temp->id }}"
+                                @selected(
+                                    old('temporada_id', $temporadaActiva?->id) == $temp->id
+                                )>
+                                {{ $temp->nombre }}
+                            </option>
                         @endforeach
                     </select>
 
@@ -336,10 +331,13 @@
                     <!-- EXISTENTE -->
                     <div x-show="!crear">
                         <select name="equipo_id" class="input-modal mb-3 w-full">
+
                             <option value="">Seleccionar equipo</option>
+
                             @foreach($todosEquipos as $eq)
-                            <option value="{{ $eq->id }}">{{ $eq->nombre }}</option>
+                                <option value="{{ $eq->id }}">{{ $eq->nombre }}</option>
                             @endforeach
+
                         </select>
                     </div>
 
@@ -414,8 +412,7 @@
                         Nueva temporada<i class="fa-solid fa-table-list ml-2"></i>
                     </h2>
 
-                    <button @click="open=false"
-                        class="text-gray-400 hover:text-red-600 transition">
+                    <button @click="open=false" class="text-gray-400 hover:text-red-600 transition">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>

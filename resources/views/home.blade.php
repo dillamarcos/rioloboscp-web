@@ -10,48 +10,45 @@
 
                 <div class="relative flex items-center">
 
-                    {{-- IZQUIERDA --}}
+                    <!-- IZQUIERDA -->
                     <button @click="prev()"
                         class="mr-3 bg-indigo-700 hover:bg-indigo-600 text-white px-3 py-2 rounded-full shadow transition hover:scale-110">
                         <i class="fas fa-chevron-left"></i>
                     </button>
 
-                    {{-- SLIDER --}}
+                    <!-- SLIDER -->
                     <div class="flex-1 overflow-hidden rounded-xl shadow bg-white dark:bg-gray-800">
 
                         <template x-for="(news, index) in newsList" :key="index">
 
-                            <div
-                                class="min-h-[260px] md:min-h-[280px] grid md:grid-cols-3 gap-6 p-6 md:p-8 items-stretch"
+                            <div class="min-h-[260px] md:min-h-[280px] grid md:grid-cols-3 gap-6 p-6 md:p-8 items-stretch"
                                 :class="current === index ? 'block' : 'hidden'">
 
-                                {{-- IMAGEN --}}
+                                <!-- IMAGEN -->
                                 <div class="md:col-span-1 flex items-center justify-center">
-                                    <img
-                                        :src="`/storage/${news.imagen}`"
-                                        class="w-full max-h-56 object-cover rounded-lg shadow-sm">
+                                    <img :src="`/storage/${news.imagen}`" class="w-full max-h-56 object-cover rounded-lg shadow-sm">
                                 </div>
 
-                                {{-- CONTENIDO --}}
+                                <!-- CONTENIDO -->
                                 <div class="md:col-span-2 flex flex-col h-full">
 
-                                    {{-- TITULO --}}
+                                    <!-- TITULO -->
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white"
                                         x-text="news.titulo">
                                     </h3>
 
                                     <div class="h-px bg-gray-300 dark:bg-gray-600 my-3"></div>
 
-                                    {{-- DESCRIPCIÓN --}}
+                                    <!-- DESCRIPCIÓN -->
                                     <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base
                                         line-clamp-4 md:line-clamp-5 overflow-hidden">
                                         <span x-text="news.contenido"></span>
                                     </p>
 
-                                    {{-- ESPACIADOR FLEX --}}
+                                    <!-- ESPACIADOR FLEX -->
                                     <div class="flex-1"></div>
 
-                                    {{-- FOOTER FIJO ABAJO --}}
+                                    <!-- FOOTER FIJO ABAJO -->
                                     <div class="flex justify-between items-center pt-4 mt-auto">
 
                                         <span class="text-xs md:text-sm text-gray-500"
@@ -74,9 +71,8 @@
 
                     </div>
 
-                    {{-- DERECHA --}}
-                    <button @click="next()"
-                        class="ml-3 bg-indigo-700 hover:bg-indigo-600 text-white px-3 py-2 rounded-full shadow transition hover:scale-110">
+                    <!-- DERECHA -->
+                    <button @click="next()" class="ml-3 bg-indigo-700 hover:bg-indigo-600 text-white px-3 py-2 rounded-full shadow transition hover:scale-110">
                         <i class="fas fa-chevron-right"></i>
                     </button>
 
@@ -97,49 +93,45 @@
 
                     @if($ultimoPartido)
 
-                    <div class="flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 text-sm md:text-base font-semibold">
+                        <div class="flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 text-sm md:text-base font-semibold">
 
-                        {{-- LOCAL --}}
-                        <div class="flex items-center gap-2">
+                            <!-- LOCAL -->
+                            <div class="flex items-center gap-2">
 
-                            <img src="{{ $ultimoPartido->equipoLocal?->escudo 
-                                ? asset('storage/' . $ultimoPartido->equipoLocal->escudo) 
-                                : asset('images/default.png') }}"
-                                class="w-8 h-8 rounded-full object-contain">
+                                <img src="{{ $ultimoPartido->equipoLocal?->escudo ? asset('storage/' . $ultimoPartido->equipoLocal->escudo) : asset('images/default.png') }}"
+                                    class="w-8 h-8 rounded-full object-contain">
 
-                            <span class="text-gray-800 dark:text-gray-200">
-                                {{ $ultimoPartido->equipoLocal?->nombre ?? 'Equipo' }}
-                            </span>
-                        </div>
+                                <span class="text-gray-800 dark:text-gray-200">
+                                    {{ $ultimoPartido->equipoLocal?->nombre ?? 'Equipo' }}
+                                </span>
+                            </div>
 
-                        <span class="font-bold text-gray-900 dark:text-white">
-                            {{ $ultimoPartido->goles_local ?? 0 }} - {{ $ultimoPartido->goles_visitante ?? 0 }}
-                        </span>
-
-                        {{-- VISITANTE --}}
-                        <div class="flex items-center gap-2">
-
-                            <span class="text-gray-800 dark:text-gray-200">
-                                {{ $ultimoPartido->equipoVisitante?->nombre ?? 'Equipo' }}
+                            <span class="font-bold text-gray-900 dark:text-white">
+                                {{ $ultimoPartido->goles_local ?? 0 }} - {{ $ultimoPartido->goles_visitante ?? 0 }}
                             </span>
 
-                            <img src="{{ $ultimoPartido->equipoVisitante?->escudo 
-                                ? asset('storage/' . $ultimoPartido->equipoVisitante->escudo) 
-                                : asset('images/default.png') }}"
-                                class="w-8 h-8 rounded-full object-contain">
+                            <!-- VISITANTE -->
+                            <div class="flex items-center gap-2">
+
+                                <span class="text-gray-800 dark:text-gray-200">
+                                    {{ $ultimoPartido->equipoVisitante?->nombre ?? 'Equipo' }}
+                                </span>
+
+                                <img src="{{ $ultimoPartido->equipoVisitante?->escudo ? asset('storage/' . $ultimoPartido->equipoVisitante->escudo) : asset('images/default.png') }}"
+                                    class="w-8 h-8 rounded-full object-contain">
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
-                        {{ $ultimoPartido->fecha ?? '' }}
-                    </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
+                            {{ $ultimoPartido->fecha ?? '' }}
+                        </p>
 
                     @else
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        No hay partidos jugados
-                    </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            No hay partidos jugados
+                        </p>
                     @endif
 
                 </div>
@@ -155,48 +147,44 @@
 
                     @if($proximoPartido)
 
-                    <div class="flex items-center justify-center text-gray-800 dark:text-gray-200 text-sm md:text-base gap-3 font-semibold">
+                        <div class="flex items-center justify-center text-gray-800 dark:text-gray-200 text-sm md:text-base gap-3 font-semibold">
 
-                        {{-- LOCAL --}}
-                        <div class="flex items-center gap-2">
+                            <!-- LOCAL -->
+                            <div class="flex items-center gap-2">
 
-                            <img src="{{ $proximoPartido->equipoLocal?->escudo 
-                                ? asset('storage/' . $proximoPartido->equipoLocal->escudo) 
-                                : asset('images/default.png') }}"
-                                class="w-8 h-8 rounded-full object-contain">
+                                <img src="{{ $proximoPartido->equipoLocal?->escudo ? asset('storage/' . $proximoPartido->equipoLocal->escudo) : asset('images/default.png') }}"
+                                    class="w-8 h-8 rounded-full object-contain">
 
-                            <span class="text-gray-800 dark:text-gray-200">
-                                {{ $proximoPartido->equipoLocal?->nombre ?? 'Equipo' }}
-                            </span>
-                        </div>
+                                <span class="text-gray-800 dark:text-gray-200">
+                                    {{ $proximoPartido->equipoLocal?->nombre ?? 'Equipo' }}
+                                </span>
+                            </div>
 
-                        <span class="text-gray-700 dark:text-gray-300">
-                            vs
-                        </span>
-
-                        {{-- VISITANTE --}}
-                        <div class="flex items-center gap-2">
-
-                            <span class="text-gray-800 dark:text-gray-200">
-                                {{ $proximoPartido->equipoVisitante?->nombre ?? 'Equipo' }}
+                            <span class="text-gray-700 dark:text-gray-300">
+                                vs
                             </span>
 
-                            <img src="{{ $proximoPartido->equipoVisitante?->escudo 
-                                ? asset('storage/' . $proximoPartido->equipoVisitante->escudo) 
-                                : asset('images/default.png') }}"
-                                class="w-8 h-8 rounded-full object-contain">
+                            <!-- VISITANTE -->
+                            <div class="flex items-center gap-2">
+
+                                <span class="text-gray-800 dark:text-gray-200">
+                                    {{ $proximoPartido->equipoVisitante?->nombre ?? 'Equipo' }}
+                                </span>
+
+                                <img src="{{ $proximoPartido->equipoVisitante?->escudo ? asset('storage/' . $proximoPartido->equipoVisitante->escudo) : asset('images/default.png') }}"
+                                    class="w-8 h-8 rounded-full object-contain">
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
-                        {{ $proximoPartido->fecha ?? '' }}
-                    </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
+                            {{ $proximoPartido->fecha ?? '' }}
+                        </p>
 
                     @else
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        No hay próximo partido programado
-                    </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            No hay próximo partido programado
+                        </p>
                     @endif
 
                 </div>
@@ -244,7 +232,7 @@
                     </a>
                 </div>
 
-                {{-- CLASIFICACIÓN --}}
+                <!-- CLASIFICACIÓN -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
 
                     <h3 class="font-bold text-gray-800 dark:text-gray-100 mb-3">
@@ -280,21 +268,21 @@
 
                         @foreach($racha as $r)
 
-                        @if($r == 'V')
-                        <div class="w-8 h-8 flex items-center justify-center rounded-md bg-green-500 text-white">
-                            <i class="fas fa-check text-sm"></i>
-                        </div>
+                            @if($r == 'V')
+                                <div class="w-8 h-8 flex items-center justify-center rounded-md bg-green-500 text-white">
+                                    <i class="fas fa-check text-sm"></i>
+                                </div>
 
-                        @elseif($r == 'E')
-                        <div class="w-8 h-8 flex items-center justify-center rounded-md bg-yellow-500 text-white">
-                            <i class="fas fa-minus text-sm"></i>
-                        </div>
+                            @elseif($r == 'E')
+                                <div class="w-8 h-8 flex items-center justify-center rounded-md bg-yellow-500 text-white">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </div>
 
-                        @else
-                        <div class="w-8 h-8 flex items-center justify-center rounded-md bg-red-500 text-white">
-                            <i class="fas fa-xmark text-sm"></i>
-                        </div>
-                        @endif
+                            @else
+                                <div class="w-8 h-8 flex items-center justify-center rounded-md bg-red-500 text-white">
+                                    <i class="fas fa-xmark text-sm"></i>
+                                </div>
+                            @endif
 
                         @endforeach
 
@@ -396,7 +384,7 @@
         </div>
 
 
-        {{-- JS --}}
+        <!-- JS -->
         <script>
             function newsSlider(newsData) {
                 return {

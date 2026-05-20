@@ -14,12 +14,12 @@ class EquipoInstructorController extends Controller
         $temporadas = Temporada::all();
         $temporadaActiva = Temporada::where('activa', true)->first();
 
-        // 🔹 temporada seleccionada (filtro o activa)
+        // temporada seleccionada (filtro o activa)
         $temporadaSeleccionada = $request->filled('temporada_id')
             ? Temporada::find($request->temporada_id)
             : $temporadaActiva;
 
-        // 🔹 base query de equipos
+        // base query de equipos
         $query = Equipo::query()
             ->with(['temporadas' => function ($q) use ($temporadaSeleccionada) {
                 if ($temporadaSeleccionada) {
@@ -27,14 +27,14 @@ class EquipoInstructorController extends Controller
                 }
             }]);
 
-        // 🔹 FILTRO POR TEMPORADA (CLAVE)
+        // FILTRO POR TEMPORADA
         if ($temporadaSeleccionada) {
             $query->whereHas('temporadas', function ($q) use ($temporadaSeleccionada) {
                 $q->where('temporada_id', $temporadaSeleccionada->id);
             });
         }
 
-        // 🔹 BUSCADOR
+        // BUSCADOR
         if ($request->filled('buscar')) {
             $query->where('nombre', 'like', '%' . $request->buscar . '%');
         }

@@ -19,6 +19,14 @@ class SolicitudSocioController extends Controller
             'dni' => ['required', 'regex:/^[0-9]{8}[A-Za-z]$/'],
         ]);
 
+        // Si el DNI ya existe en la tabla de socios, se frena la solicitud
+        $dniExiste = Socio::where('dni', $request->dni)->exists();
+        if ($dniExiste) {
+            return back()
+                ->withInput()
+                ->with('error', 'Ya hay un socio con ese DNI');
+        }
+
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
@@ -81,6 +89,12 @@ class SolicitudSocioController extends Controller
         // evitar duplicados
         if ($solicitud->user->socio) {
             return back()->with('error', 'Este usuario ya es socio');
+        }
+
+        // Validar si el DNI de la solicitud ya fue registrado por otro socio antes de aceptar
+        $dniExiste = Socio::where('dni', $solicitud->dni)->exists();
+        if ($dniExiste) {
+            return back()->with('error', 'Ya hay un socio con ese DNI');
         }
 
         Socio::create([

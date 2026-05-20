@@ -100,12 +100,12 @@
 
                                 @foreach($categorias as $cat)
 
-                                <option value="{{ $cat->id }}"
-                                    @selected(request('categoria')==$cat->id)>
+                                    <option value="{{ $cat->id }}"
+                                        @selected(request('categoria')==$cat->id)>
 
-                                    {{ $cat->nombre }}
+                                        {{ $cat->nombre }}
 
-                                </option>
+                                    </option>
 
                                 @endforeach
 
@@ -145,85 +145,85 @@
 
                         @forelse($productos as $producto)
 
-                        <a href="{{ route('tienda.show', $producto->id) }}" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow-md overflow-hidden cursor-pointer
-                            hover:-translate-y-1 hover:shadow-xl hover:border hover:border-indigo-600 dark:hover:border-indigo-600 transition transition flex flex-col">
+                            <a href="{{ route('tienda.show', $producto->id) }}" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl shadow-md overflow-hidden cursor-pointer
+                                hover:-translate-y-1 hover:shadow-xl hover:border hover:border-indigo-600 dark:hover:border-indigo-600 transition transition flex flex-col">
 
-                            <!-- IMAGEN -->
-                            <div class="overflow-hidden">
-                                <img src="{{ asset('storage/' . $producto->imagen) }}"
-                                    class="h-48 w-full object-contain">
-                            </div>
-
-                            <!-- INFO -->
-                            <div class="p-4 flex flex-col flex-1 justify-between">
-
-                                <div>
-                                    <h3 class="font-bold text-gray-800 dark:text-white">
-                                        {{ $producto->nombre }}
-                                    </h3>
-
-                                    <p class="text-sm text-gray-500 dark:text-gray-300 mt-1">
-                                        {{ $producto->descripcion_corta }}
-                                    </p>
+                                <!-- IMAGEN -->
+                                <div class="overflow-hidden">
+                                    <img src="{{ asset('storage/' . $producto->imagen) }}"
+                                        class="h-48 w-full object-contain">
                                 </div>
 
-                                <!-- FOOTER -->
-                                <div class="mt-4 flex justify-between items-center">
+                                <!-- INFO -->
+                                <div class="p-4 flex flex-col flex-1 justify-between">
 
-                                    <span class="font-semibold text-gray-700 dark:text-white">
-                                        {{ number_format($producto->precio, 2) }} €
-                                    </span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 dark:text-white">
+                                            {{ $producto->nombre }}
+                                        </h3>
 
-                                    <div class="flex gap-3 items-center text-xl">
+                                        <p class="text-sm text-gray-500 dark:text-gray-300 mt-1">
+                                            {{ $producto->descripcion_corta }}
+                                        </p>
+                                    </div>
 
-                                        @php
-                                        $isFav = auth()->check() && auth()->user()->favoritos->contains($producto->id);
-                                        $inCart = auth()->check() && auth()->user()->carrito->contains('producto_id', $producto->id);
-                                        @endphp
+                                    <!-- FOOTER -->
+                                    <div class="mt-4 flex justify-between items-center">
 
-                                        <!-- FAVORITO -->
-                                        <form method="POST" action="{{ route('favoritos.toggle', $producto->id) }}">
-                                            @csrf
-                                            <button type="submit" class="group transition">
+                                        <span class="font-semibold text-gray-700 dark:text-white">
+                                            {{ number_format($producto->precio, 2) }} €
+                                        </span>
 
-                                                @if($isFav)
-                                                <i class="fa-solid fa-heart text-red-500 group-hover:hidden"></i>
-                                                <i class="fa-solid fa-heart-crack text-red-600 hidden group-hover:inline"></i>
-                                                @else
-                                                <i class="fa-regular fa-heart text-gray-400 group-hover:text-red-500"></i>
-                                                @endif
+                                        <div class="flex gap-3 items-center text-xl">
 
-                                            </button>
-                                        </form>
+                                            @php
+                                                $isFav = auth()->check() && auth()->user()->favoritos->contains($producto->id);
+                                                $inCart = auth()->check() && auth()->user()->carrito->contains('producto_id', $producto->id);
+                                            @endphp
 
-                                        <!-- CARRITO -->
-                                        <form method="POST" action="{{ route('carrito.toggle', $producto->id) }}">
-                                            @csrf
-                                            <button type="submit" class="group transition">
+                                            <!-- FAVORITO -->
+                                            <form method="POST" action="{{ route('favoritos.toggle', $producto->id) }}">
+                                                @csrf
+                                                <button type="submit" class="group transition">
 
-                                                @if($inCart)
-                                                <i class="fa-solid fa-cart-shopping text-indigo-600 group-hover:hidden"></i>
-                                                <i class="fa-solid fa-cart-arrow-down text-red-500 hidden group-hover:inline"></i>
-                                                @else
-                                                <i class="fa-solid fa-cart-plus text-gray-400 group-hover:text-indigo-600"></i>
-                                                @endif
+                                                    @if($isFav)
+                                                        <i class="fa-solid fa-heart text-red-500 group-hover:hidden"></i>
+                                                        <i class="fa-solid fa-heart-crack text-red-600 hidden group-hover:inline"></i>
+                                                    @else
+                                                        <i class="fa-regular fa-heart text-gray-400 group-hover:text-red-500"></i>
+                                                    @endif
 
-                                            </button>
-                                        </form>
+                                                </button>
+                                            </form>
+
+                                            <!-- CARRITO -->
+                                            <form method="POST" action="{{ route('carrito.toggle', $producto->id) }}">
+                                                @csrf
+                                                <button type="submit" class="group transition">
+
+                                                    @if($inCart)
+                                                        <i class="fa-solid fa-cart-shopping text-indigo-600 group-hover:hidden"></i>
+                                                        <i class="fa-solid fa-cart-arrow-down text-red-500 hidden group-hover:inline"></i>
+                                                    @else
+                                                        <i class="fa-solid fa-cart-plus text-gray-400 group-hover:text-indigo-600"></i>
+                                                    @endif
+
+                                                </button>
+                                            </form>
+
+                                        </div>
 
                                     </div>
 
                                 </div>
 
-                            </div>
-
-                        </a>
+                            </a>
 
                         @empty
 
-                        <div class="col-span-full text-center text-gray-500 py-10">
-                            No hay productos con estos filtros
-                        </div>
+                            <div class="col-span-full text-center text-gray-500 py-10">
+                                No hay productos con estos filtros
+                            </div>
 
                         @endforelse
 

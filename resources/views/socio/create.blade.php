@@ -22,36 +22,32 @@
                 @csrf
 
                 @auth
-                <div class="bg-indigo-50 dark:bg-gray-700 p-3 rounded-lg text-sm text-gray-700 dark:text-gray-200">
-                    Solicitud como:
-                    <b>{{ auth()->user()->nombre }} {{ auth()->user()->apellidos }}</b>
-                </div>
+                    <div class="bg-indigo-50 dark:bg-gray-700 p-3 rounded-lg text-sm text-gray-700 dark:text-gray-200">
+                        Solicitud como:
+                        <b>{{ auth()->user()->nombre }} {{ auth()->user()->apellidos }}</b>
+                    </div>
                 @endauth
 
                 @guest
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                    <input type="text" name="nombre" placeholder="Nombre"
-                        class="input-modern" required>
+                        <input type="text" name="nombre" placeholder="Nombre" class="input-modern" required>
 
-                    <input type="text" name="apellidos" placeholder="Apellidos"
-                        class="input-modern" required>
+                        <input type="text" name="apellidos" placeholder="Apellidos" class="input-modern" required>
 
-                </div>
+                    </div>
 
-                <input type="email" name="email" placeholder="Correo electrónico"
-                    class="input-modern mt-4" required>
+                    <input type="email" name="email" placeholder="Correo electrónico" class="input-modern mt-4" required>
 
-                @error('email')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
+                    @error('email')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
 
-                <input type="password" name="password" placeholder="Contraseña"
-                    class="input-modern mt-4" required>
+                    <input type="password" name="password" placeholder="Contraseña" class="input-modern mt-4" required>
 
-                @error('password')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
+                    @error('password')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
 
                 @endguest
 
@@ -65,7 +61,7 @@
                     class="input-modern">
 
                 @error('telefono')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
 
                 <input type="text"
@@ -77,11 +73,10 @@
                     class="input-modern" required>
 
                 @error('dni')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
 
-                <button type="submit"
-                    class="w-full bg-indigo-700 hover:bg-indigo-600 text-white font-semibold py-3 rounded-xl transition shadow-md hover:scale-[1.02]">
+                <button type="submit" class="w-full bg-indigo-700 hover:bg-indigo-600 text-white font-semibold py-3 rounded-xl transition shadow-md hover:scale-[1.02]">
                     Enviar solicitud
                 </button>
 

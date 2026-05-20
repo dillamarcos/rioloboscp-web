@@ -35,8 +35,7 @@
         </div>
 
         <!-- CARD SOCIO -->
-        <div class="bg-white dark:bg-gray-900 shadow rounded-xl p-6 
-            border border-gray-100 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-900 shadow rounded-xl p-6 border border-gray-100 dark:border-gray-700">
 
             <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
                 <i class="fas fa-id-card text-indigo-600 dark:text-indigo-400"></i>
@@ -59,9 +58,7 @@
                 <p><span class="font-semibold">Cuota:</span> {{ $user->socio->cuota }} €</p>                
 
                 <p><span class="font-semibold">Fecha fin:</span>
-                    {{ $user->socio->fecha_fin
-                        ? \Carbon\Carbon::parse($user->socio->fecha_fin)->format('d/m/Y')
-                        : 'Indefinida' }}
+                    {{ $user->socio->fecha_fin ? \Carbon\Carbon::parse($user->socio->fecha_fin)->format('d/m/Y') : 'Indefinida' }}
                 </p>
 
             </div>

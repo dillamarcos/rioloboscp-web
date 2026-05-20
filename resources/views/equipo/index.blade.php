@@ -32,11 +32,11 @@
         <!-- CARD EQUIPO -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 flex flex-col md:flex-row items-center md:items-start gap-6">
 
-            {{-- ESCUDO --}}
+            <!-- ESCUDO -->
             <img src="{{ asset('images/escudo_nav.png') }}"
                 class="w-28 h-28 md:w-36 md:h-36 object-contain">
 
-            {{-- INFO --}}
+            <!-- INFO -->
             <div class="text-justify md:text-left">
 
                 <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-100">
@@ -61,28 +61,26 @@
         <!-- FILTRO (TABS) -->
         <div class="bg-gray-300 dark:bg-gray-700 rounded-lg flex flex-wrap md:flex-nowrap w-full md:w-fit">
 
-            {{-- PLANTILLA --}}
+            <!-- PLANTILLA -->
             <button @click="tab = 'plantilla'" :class="tab === 'plantilla' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
                 class="px-6 py-3 md:py-2 rounded-md text-sm md:text-base font-semibold transition w-1/2 md:w-auto">
                 Plantilla
             </button>
 
-            {{-- ESTADÍSTICAS --}}
+            <!-- ESTADÍSTICAS -->
             <button @click="tab = 'estadisticas'" :class="tab === 'estadisticas' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
                 class="px-6 py-3 md:py-2 rounded-md text-sm md:text-base font-semibold transition w-1/2 md:w-auto">
                 Estadísticas
             </button>
 
-            {{-- INSTALACIONES --}}
-            <button @click="tab = 'instalaciones'"
-                :class="tab === 'instalaciones' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
+            <!-- INSTALACIONES -->
+            <button @click="tab = 'instalaciones'" :class="tab === 'instalaciones' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
                 class="px-6 py-3 md:py-2 rounded-md text-sm md:text-base font-semibold transition w-1/2 md:w-auto">
                 Instalaciones
             </button>
 
-            {{-- SOBRE NOSOTROS --}}
-            <button @click="tab = 'sobre'"
-                :class="tab === 'sobre' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
+            <!-- SOBRE NOSOTROS -->
+            <button @click="tab = 'sobre'" :class="tab === 'sobre' ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:scale-105 transition-transform'"
                 class="px-6 py-3 md:py-2 rounded-md text-sm md:text-base font-semibold transition w-1/2 md:w-auto">
                 Sobre nosotros
             </button>
@@ -93,58 +91,58 @@
         <div x-show="tab === 'plantilla'" x-transition class="space-y-8">
 
             @php
-            $posiciones = [
-            'portero' => 'Porteros',
-            'cierre' => 'Cierres',
-            'ala' => 'Ala',
-            'delantero' => 'Delanteros',
-            ];
+                $posiciones = [
+                    'portero' => 'Porteros',
+                    'cierre' => 'Cierres',
+                    'ala' => 'Ala',
+                    'delantero' => 'Delanteros',
+                ];
             @endphp
 
             @foreach($posiciones as $key => $titulo)
 
             <div>
 
-                {{-- TITULO POSICIÓN --}}
+                <!-- TITULO POSICIÓN -->
                 <h3 class="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200 mb-4">
                     {{ $titulo }}
                 </h3>
 
-                {{-- JUGADORES --}}
+                <!-- JUGADORES -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
 
                     @foreach($jugadores->where('posicion', $key)->sortBy('dorsal') as $jugador)
 
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-lg transition p-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-lg transition p-3">
 
-                        {{-- IMAGEN --}}
-                        <div class="relative">
+                            <!-- IMAGEN -->
+                            <div class="relative">
 
-                            <img src="{{ $jugador->imagen ? asset('storage/'.$jugador->imagen) : asset('storage/default-player.png') }}"
-                                class="w-full h-52 object-contain rounded-lg">
+                                <img src="{{ $jugador->imagen ? asset('storage/'.$jugador->imagen) : asset('storage/default-player.png') }}"
+                                    class="w-full h-52 object-contain rounded-lg">
 
-                            {{-- DORSAL --}}
-                            <div class="absolute bottom-2 right-2 bg-indigo-600 text-white font-bold 
-                                    w-8 h-8 flex items-center justify-center rounded-md shadow">
-                                {{ $jugador->dorsal }}
+                                <!-- DORSAL -->
+                                <div class="absolute bottom-2 right-2 bg-indigo-600 text-white font-bold 
+                                        w-8 h-8 flex items-center justify-center rounded-md shadow">
+                                    {{ $jugador->dorsal }}
+                                </div>
+
+                            </div>
+
+                            <!-- INFO -->
+                            <div class="mt-3 text-center">
+
+                                <p class="text-sm font-semibold text-gray-800 dark:text-gray-100 leading-tight">
+                                    {{ $jugador->nombre }}
+                                </p>
+
+                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                    {{ $jugador->apellidos }}
+                                </p>
+
                             </div>
 
                         </div>
-
-                        {{-- INFO --}}
-                        <div class="mt-3 text-center">
-
-                            <p class="text-sm font-semibold text-gray-800 dark:text-gray-100 leading-tight">
-                                {{ $jugador->nombre }}
-                            </p>
-
-                            <p class="text-xs text-gray-500 dark:text-gray-400">
-                                {{ $jugador->apellidos }}
-                            </p>
-
-                        </div>
-
-                    </div>
 
                     @endforeach
 
@@ -164,7 +162,7 @@
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
 
-                    {{-- ENTRENADOR --}}
+                    <!-- ENTRENADOR -->
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition p-3">
 
                         <div class="relative">
@@ -187,7 +185,7 @@
 
                     </div>
 
-                    {{-- SEGUNDO ENTRENADOR --}}
+                    <!-- SEGUNDO ENTRENADOR -->
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition p-3">
 
                         <div class="relative">
@@ -223,10 +221,10 @@
             data-derrotas="{{ $derrotas }}"
             data-goles="{{ json_encode(array_values($golesPorMes)) }}">
 
-            {{-- FILA 1 --}}
+            <!-- FILA 1 -->
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-                {{-- TABLA GOLEADORES (3/4) --}}
+                <!-- TABLA GOLEADORES (3/4) -->
                 <div class="lg:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow p-5">
 
                     <h3 class="text-lg md:text-xl font-bold text-gray-700 dark:text-gray-200 mb-4">
@@ -246,21 +244,21 @@
                         <tbody class="divide-y dark:divide-gray-700">
 
                             @foreach($topGoleadores as $i => $jugador)
-                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 transition">
 
-                                <td class="py-2 font-semibold">
-                                    {{ $i + 1 }}
-                                </td>
+                                    <td class="py-2 font-semibold">
+                                        {{ $i + 1 }}
+                                    </td>
 
-                                <td class="py-2">
-                                    {{ $jugador->nombre }} {{ $jugador->apellidos }}
-                                </td>
+                                    <td class="py-2">
+                                        {{ $jugador->nombre }} {{ $jugador->apellidos }}
+                                    </td>
 
-                                <td class="py-2 text-right font-bold text-indigo-600">
-                                    {{ $jugador->goles }}
-                                </td>
+                                    <td class="py-2 text-right font-bold text-indigo-600">
+                                        {{ $jugador->goles }}
+                                    </td>
 
-                            </tr>
+                                </tr>
                             @endforeach
 
                         </tbody>
@@ -269,7 +267,7 @@
 
                 </div>
 
-                {{-- PICHICHI (1/4) --}}
+                <!-- PICHICHI (1/4) -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4 flex flex-col items-center text-center">
 
                     <h3 class="flex text-start justify-start text-lg font-bold text-gray-700 dark:text-gray-200 mb-3">
@@ -347,10 +345,10 @@
 
                             <div class="flex gap-2">
                                 @foreach($racha as $r)
-                                <span class="px-3 py-1 rounded-lg text-white font-bold text-sm
-                                        {{ $r == 'V' ? 'bg-green-500' : ($r == 'E' ? 'bg-yellow-500' : 'bg-red-500') }}">
-                                    {{ $r }}
-                                </span>
+                                    <span class="px-3 py-1 rounded-lg text-white font-bold text-sm
+                                            {{ $r == 'V' ? 'bg-green-500' : ($r == 'E' ? 'bg-yellow-500' : 'bg-red-500') }}">
+                                        {{ $r }}
+                                    </span>
                                 @endforeach
                             </div>
                         </div>
@@ -415,7 +413,7 @@
                         </p>
                     </div>
 
-                    {{-- Imagen a la derecha --}}
+                    <!-- Imagen a la derecha -->
                     <div class="w-full md:w-1/4">
                         <img src="{{ asset('images/historia_club.jpg') }}"
                             alt="Historia del club"
@@ -597,8 +595,7 @@
 
                     <!-- DERECHA -->
                     <button @click="next()"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-indigo-700 hover:bg-indigo-600 text-white 
-                    w-8 h-8 md:w-10 md:h-10 text-sm md:text-base rounded-full shadow transition hover:scale-110">
+                        class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-indigo-700 hover:bg-indigo-600 text-white w-8 h-8 md:w-10 md:h-10 text-sm md:text-base rounded-full shadow transition hover:scale-110">
                         <i class="fas fa-chevron-right"></i>
                     </button>
 
@@ -607,9 +604,7 @@
                 <!-- INDICADORES -->
                 <div class="flex justify-center gap-2 mt-4">
                     <template x-for="(img, index) in images" :key="index">
-                        <div class="w-2.5 h-2.5 rounded-full"
-                            :class="current === index ? 'bg-indigo-600' : 'bg-gray-400 dark:bg-gray-600'">
-                        </div>
+                        <div class="w-2.5 h-2.5 rounded-full" :class="current === index ? 'bg-indigo-600' : 'bg-gray-400 dark:bg-gray-600'"></div>
                     </template>
                 </div>
 

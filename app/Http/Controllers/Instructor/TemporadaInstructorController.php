@@ -33,7 +33,7 @@ class TemporadaInstructorController extends Controller
             ]);
         }
 
-        // opcional: desactivar otras si esta es activa
+        // desactivar otras si esta es activa
         if (!empty($data['activa'])) {
             Temporada::where('activa', true)->update(['activa' => false]);
         }

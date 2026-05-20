@@ -19,8 +19,7 @@
         <!-- FILTROS -->
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
 
-            <form method="GET"
-                class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:flex lg:flex-1 gap-4">
+            <form method="GET" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:flex lg:flex-1 gap-4">
 
                 <!-- BUSCAR NOTICIA -->
                 <input type="text"
@@ -55,31 +54,23 @@
                     </select>
 
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <i class="fa-solid fa-chevron-down text-sm transition"
-                            :class="{ 'rotate-180': open }"></i>
+                        <i class="fa-solid fa-chevron-down text-sm transition" :class="{ 'rotate-180': open }"></i>
                     </div>
 
                 </div>
 
                 <!-- BOTÓN -->
-                <button type="submit"
-                    class="btn-primary w-full sm:w-auto">
-
+                <button type="submit" class="btn-primary w-full sm:w-auto">
                     Filtrar
-
                 </button>
 
             </form>
 
             <!-- NUEVA -->
             <div class="w-full lg:w-auto">
-                <button
-                    @click="$dispatch('open-create-noticia')"
-                    class="btn-primary w-full lg:w-auto whitespace-nowrap">
-
+                <button @click="$dispatch('open-create-noticia')" class="btn-primary w-full lg:w-auto whitespace-nowrap">
                     <i class="fa-solid fa-plus text-sm"></i>
                     Nueva noticia
-
                 </button>
             </div>
 
@@ -103,97 +94,92 @@
 
                     @forelse($noticias as $noticia)
 
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
 
-                        <!-- NOTICIA -->
-                        <td class="px-4 py-3 min-w-[320px]">
+                            <!-- NOTICIA -->
+                            <td class="px-4 py-3 min-w-[320px]">
 
-                            <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-3">
 
-                                <img src="{{ $noticia->imagen ? asset('storage/'.$noticia->imagen) : asset('images/default.png') }}"
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded object-contain flex-shrink-0">
+                                    <img src="{{ $noticia->imagen ? asset('storage/'.$noticia->imagen) : asset('images/default.png') }}" class="w-10 h-10 sm:w-12 sm:h-12 rounded object-contain flex-shrink-0">
 
-                                <div>
-                                    <p class="font-medium text-xs sm:text-sm md:text-base">
-                                        {{ $noticia->titulo }}
-                                    </p>
+                                    <div>
+                                        <p class="font-medium text-xs sm:text-sm md:text-base">
+                                            {{ $noticia->titulo }}
+                                        </p>
 
-                                    <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
-                                        {{ $noticia->contenido }}
-                                    </p>
+                                        <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+                                            {{ $noticia->contenido }}
+                                        </p>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            </td>
 
-                        </td>
+                            <!-- FECHA -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ \Carbon\Carbon::parse($noticia->fecha_publicacion)->format('d/m/Y') }}
+                            </td>
 
-                        <!-- FECHA -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ \Carbon\Carbon::parse($noticia->fecha_publicacion)->format('d/m/Y') }}
-                        </td>
+                            <!-- AUTOR -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ $noticia->user?->nombre }} {{ $noticia->user?->apellidos }}
+                            </td>
 
-                        <!-- AUTOR -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $noticia->user?->nombre }} {{ $noticia->user?->apellidos }}
-                        </td>
+                            <!-- ACCIONES -->
+                            <td class="px-4 py-3 text-right flex justify-end gap-1">
 
-                        <!-- ACCIONES -->
-                        <td class="px-4 py-3 text-right flex justify-end gap-1">
+                                @php
+                                    $data = [
+                                        'id' => $noticia->id,
+                                        'titulo' => $noticia->titulo,
+                                        'contenido' => $noticia->contenido,
+                                        'fecha_publicacion' => $noticia->fecha_publicacion,
+                                        'equipo_id' => $noticia->equipo_id,
+                                        'imagen' => $noticia->imagen,
+                                    ];
+                                @endphp
 
-                            @php
-                            $data = [
-                            'id' => $noticia->id,
-                            'titulo' => $noticia->titulo,
-                            'contenido' => $noticia->contenido,
-                            'fecha_publicacion' => $noticia->fecha_publicacion,
-                            'equipo_id' => $noticia->equipo_id,
-                            'imagen' => $noticia->imagen,
-                            ];
-                            @endphp
-
-                            <!-- EDITAR -->
-                            <button
-                                @click='$dispatch("open-edit-noticia", @json($data))'
-                                class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
-
-                                <i class="fa-solid fa-pen-to-square"></i>
-
-                            </button>
-
-                            <!-- ELIMINAR -->
-                            <form id="delete-noticia-{{ $noticia->id }}"
-                                method="POST"
-                                action="{{ route('panel.instructor.noticias.destroy', $noticia->id) }}">
-
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="button"
-                                    @click="$dispatch('open-confirm', {
-                                        title: 'Eliminar noticia',
-                                        message: '¿Seguro que quieres eliminar esta noticia?',
-                                        action: '#delete-noticia-{{ $noticia->id }}'
-                                    })"
-                                    class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
-
-                                    <i class="fa-solid fa-trash"></i>
-
+                                <!-- EDITAR -->
+                                <button @click='$dispatch("open-edit-noticia", @json($data))' class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
 
-                            </form>
+                                <!-- ELIMINAR -->
+                                <form id="delete-noticia-{{ $noticia->id }}"
+                                    method="POST"
+                                    action="{{ route('panel.instructor.noticias.destroy', $noticia->id) }}">
 
-                        </td>
+                                    @csrf
+                                    @method('DELETE')
 
-                    </tr>
+                                    <button type="button"
+                                        @click="$dispatch('open-confirm', {
+                                            title: 'Eliminar noticia',
+                                            message: '¿Seguro que quieres eliminar esta noticia?',
+                                            action: '#delete-noticia-{{ $noticia->id }}'
+                                        })"
+                                        class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
+
+                                        <i class="fa-solid fa-trash"></i>
+
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
 
                     @empty
 
-                    <tr>
-                        <td colspan="5"
-                            class="text-center py-6 text-gray-500">
-                            No hay noticias
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="5"
+                                class="text-center py-6 text-gray-500">
+                                No hay noticias
+                            </td>
+                        </tr>
 
                     @endforelse
 
@@ -237,9 +223,7 @@
                 @click="open=false"></div>
 
             <!-- MODAL -->
-            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-                    w-full max-w-sm sm:max-w-md md:max-w-2xl
-                    p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between mb-4">
@@ -251,9 +235,7 @@
 
                     <button @click="open=false"
                         class="hover:scale-110 hover:text-red-600 transition">
-
                         <i class="fa-solid fa-xmark"></i>
-
                     </button>
 
                 </div>
@@ -310,19 +292,12 @@
                     <!-- BOTONES -->
                     <div class="flex justify-end gap-2 mt-5">
 
-                        <button type="button"
-                            @click="open=false"
-                            class="btn-secondary">
-
+                        <button type="button" @click="open=false" class="btn-secondary">
                             Cancelar
-
                         </button>
 
-                        <button type="submit"
-                            class="btn-primary">
-
+                        <button type="submit" class="btn-primary">
                             Guardar
-
                         </button>
 
                     </div>
@@ -358,9 +333,7 @@
                 @click="open=false"></div>
 
             <!-- MODAL -->
-            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-                        w-[92%] sm:w-full max-w-sm sm:max-w-md md:max-w-2xl
-                        p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[92%] sm:w-full max-w-sm sm:max-w-md md:max-w-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between mb-4">
@@ -370,11 +343,8 @@
                         <i class="fa-solid fa-newspaper ml-2"></i>
                     </h2>
 
-                    <button @click="open=false"
-                        class="hover:scale-110 hover:text-red-600 transition">
-
+                    <button @click="open=false" class="hover:scale-110 hover:text-red-600 transition">
                         <i class="fa-solid fa-xmark"></i>
-
                     </button>
 
                 </div>
@@ -433,19 +403,12 @@
                     <!-- BOTONES -->
                     <div class="flex justify-end gap-2 mt-5">
 
-                        <button type="button"
-                            @click="open=false"
-                            class="btn-secondary">
-
+                        <button type="button" @click="open=false" class="btn-secondary">
                             Cancelar
-
                         </button>
 
-                        <button type="submit"
-                            class="btn-primary">
-
+                        <button type="submit" class="btn-primary">
                             Crear
-
                         </button>
 
                     </div>

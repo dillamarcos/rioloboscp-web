@@ -27,7 +27,7 @@
         ) }})"
         class="space-y-6 px-4 md:px-8">
 
-        {{-- TÍTULO --}}
+        <!-- TÍTULO -->
         <div class="text-center md:text-start">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-100">
                 Calendario completo
@@ -37,7 +37,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-            {{-- ========================= FILTROS ========================== --}}
+            <!-- FILTROS -->
             <aside x-data="{ open: false }" class="bg-white dark:bg-gray-800 rounded-xl shadow p-5 h-fit">
 
                 <!-- HEADER -->
@@ -54,7 +54,7 @@
                             Borrar filtros
                         </button>
 
-                        <!-- FLECHA SOLO MÓVIL -->
+                        <!-- FLECHA SOLO PANTALLAS PEQUEÑAS -->
                         <svg class="w-5 h-5 text-gray-600 transition-transform duration-200 lg:hidden"
                             :class="open ? 'rotate-180' : ''"
                             fill="none"
@@ -167,7 +167,7 @@
                 </div>
             </aside>
 
-            {{-- ========================= PARTIDOS ========================== --}}
+            <!-- PARTIDOS -->
             <div class="lg:col-span-3">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -218,7 +218,7 @@
             
         </div>
 
-        {{-- ========================= ALPINE ========================== --}}
+        <!-- Alpine.js -->
         <script>
             function calendarFilters() {
                 return {

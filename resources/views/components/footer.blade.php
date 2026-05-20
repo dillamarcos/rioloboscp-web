@@ -1,5 +1,4 @@
-<footer
-    class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-10 transition-colors duration-300">
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-10 transition-colors duration-300">
     <div class="w-full px-2 md:px-6 lg:px-10 py-6 flex flex-col lg:flex-row items-center justify-between gap-4">
 
         <!-- IZQUIERDA -->
@@ -8,18 +7,15 @@
             <!-- REDES -->
             <div class="flex items-center gap-4 text-gray-700 dark:text-gray-300">
 
-                <a href="https://www.instagram.com/c.p.riolobos/" target="_blank"
-                    class="hover:text-pink-500 hover:scale-110 transition text-2xl">
+                <a href="https://www.instagram.com/c.p.riolobos/" target="_blank" class="hover:text-pink-500 hover:scale-110 transition text-2xl">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
-                <a href="https://www.tiktok.com/@riolobosc.p" target="_blank"
-                    class="hover:text-black dark:hover:text-white hover:scale-110 transition text-2xl">
+                <a href="https://www.tiktok.com/@riolobosc.p" target="_blank" class="hover:text-black dark:hover:text-white hover:scale-110 transition text-2xl">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
 
-                <a href="https://www.youtube.com/@C.pRiolobos" target="_blank"
-                    class="hover:text-red-600 hover:scale-110 transition text-2xl">
+                <a href="https://www.youtube.com/@C.pRiolobos" target="_blank" class="hover:text-red-600 hover:scale-110 transition text-2xl">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
 
@@ -28,8 +24,7 @@
             <span class="text-gray-400 dark:text-gray-500">•</span>
 
             <!-- CONTACTO -->
-            <a href="{{ route('contacto') }}"
-                class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium">
+            <a href="{{ route('contacto') }}" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium">
                 Contáctenos
             </a>
 

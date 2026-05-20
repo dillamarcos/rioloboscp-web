@@ -11,11 +11,9 @@
         @click="open = false"></div>
 
     <!-- CONTENIDO -->
-    <div
-        x-transition
-        class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg p-6">
+    <div x-transition class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg p-6">
 
-        <!-- SLOT (contenido dinámico) -->
+        <!-- SLOT -->
         {{ $slot }}
 
     </div>

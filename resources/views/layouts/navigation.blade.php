@@ -1,5 +1,4 @@
-<nav x-data="{ open: false }"
-    class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 transition-colors">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 transition-colors">
 
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,11 +30,8 @@
                 <x-dropdown align="right" width="48">
 
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md
-                                   text-gray-600 dark:text-gray-200
-                                   bg-white dark:bg-gray-800
-                                   hover:text-gray-800 dark:hover:text-white
-                                   transition">
+                        <button class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-600 dark:text-gray-200 bg-white dark:bg-gray-800
+                                    hover:text-gray-800 dark:hover:text-white transition">
 
                             <div>{{ Auth::user()->name }}</div>
 
@@ -70,8 +66,7 @@
 
             <!-- HAMBURGER -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="p-2 rounded-md text-gray-500 dark:text-gray-300
-                               hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                <button @click="open = ! open" class="p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                     ☰
                 </button>
             </div>

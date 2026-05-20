@@ -123,7 +123,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // PANEL INSTRUCTOR (admin + instructor)
-Route::middleware(['auth', 'role:admin,instructor'])->group(function () {
+Route::middleware(['auth', 'role:admin,editor'])->group(function () {
 
     // Route::get('/panel/instructor', function () {
     //     return view('panel.instructor.dashboard');

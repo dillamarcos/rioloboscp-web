@@ -10,16 +10,12 @@
         <div class="flex gap-4 mb-6">
 
             <button @click="tab = 'whatsapp'" class="px-4 py-2 rounded-lg border transition"
-                :class="tab === 'whatsapp'
-                    ? 'bg-green-500 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'">
+                :class="tab === 'whatsapp' ? 'bg-green-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp
             </button>
 
             <button @click="tab = 'email'" class="px-4 py-2 rounded-lg border transition"
-                :class="tab === 'email'
-                    ? 'bg-indigo-500 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'">
+                :class="tab === 'email' ? 'bg-indigo-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'">
                 <i class="fa-solid fa-envelope"></i> Email
             </button>
 

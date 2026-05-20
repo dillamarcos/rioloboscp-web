@@ -19,9 +19,7 @@
         </h2>
 
         <!-- BOTÓN CERRAR -->
-        <button @click="open = false"
-            class="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 hover:scale-105 dark:hover:text-red-400 transition">
-
+        <button @click="open = false" class="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 hover:scale-105 dark:hover:text-red-400 transition">
             <i class="fas fa-times text-xl"></i>
         </button>
 
@@ -34,11 +32,11 @@
 
         <a href="{{ route('home') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('home') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('home'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -49,11 +47,11 @@
 
         <a href="{{ route('equipo.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('equipo.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('equipo.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -64,11 +62,11 @@
 
         <a href="{{ route('socio.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('socio.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('socio.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -79,11 +77,11 @@
 
         <a href="{{ route('clasificacion.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('clasificacion.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('clasificacion.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -94,11 +92,11 @@
 
         <a href="{{ route('calendario.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('calendario.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('calendario.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -109,11 +107,11 @@
 
         <a href="{{ route('noticias.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('noticias.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
 
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('noticias.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
@@ -124,11 +122,11 @@
 
         <a href="{{ route('tienda.index') }}" class="relative flex items-center justify-start px-4 py-2 rounded-md transition overflow-hidden
                 {{ request()->routeIs('tienda.*') || request()->routeIs('favoritos.*') || request()->routeIs('carrito.*') ? 'text-indigo-600 dark:text-indigo-200 font-semibold bg-indigo-500/10' : 
-                'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
+                    'text-gray-700 dark:text-gray-200 hover:bg-indigo-100/50 hover:scale-105 hover:text-indigo-500 dark:hover:text-indigo-300 dark:hover:bg-indigo-500/20' }}">
             
             <!-- BARRA IZQUIERDA ACTIVA -->
             @if(request()->routeIs('tienda.*') || request()->routeIs('favoritos.*') || request()->routeIs('carrito.*'))
-            <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
+                <span class="absolute left-0 top-0 h-full w-1 bg-indigo-600 rounded-r"></span>
             @endif
 
             <span>
