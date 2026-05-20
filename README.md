@@ -32,6 +32,9 @@ Para ejecutar este proyecto en cualquier ordenador, sigue los siguientes pasos.
 
 Antes de comenzar, es necesario instalar:
 
+- **PHP** (versión compatible con Laravel)
+  https://www.php.net/
+
 - **Composer** (gestor de dependencias de PHP)  
   https://getcomposer.org/
 
