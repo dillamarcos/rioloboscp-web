@@ -110,93 +110,93 @@
 
                     @forelse($socios as $socio)
 
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
 
-                        <!-- SOCIO -->
-                        <td class="px-4 py-3 font-medium whitespace-nowrap">
-                            {{ $socio->user->nombre }} {{ $socio->user->apellidos }}
-                        </td>
+                            <!-- SOCIO -->
+                            <td class="px-4 py-3 font-medium whitespace-nowrap">
+                                {{ $socio->user->nombre }} {{ $socio->user->apellidos }}
+                            </td>
 
-                        <!-- DNI -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            {{ $socio->dni }}
-                        </td>
+                            <!-- DNI -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                {{ $socio->dni }}
+                            </td>
 
-                        <!-- ESTADO -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs rounded
-                                {{ $socio->estado === 'activo' ? 'bg-green-200 dark:bg-green-900 text-green-600 dark:text-green-400' : 'bg-red-200 dark:bg-red-900 text-red-600 dark:text-red-400' }}">
-                                {{ ucfirst($socio->estado) }}
-                            </span>
-                        </td>
+                            <!-- ESTADO -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="px-2 py-1 text-xs rounded
+                                    {{ $socio->estado === 'activo' ? 'bg-green-200 dark:bg-green-900 text-green-600 dark:text-green-400' : 'bg-red-200 dark:bg-red-900 text-red-600 dark:text-red-400' }}">
+                                    {{ ucfirst($socio->estado) }}
+                                </span>
+                            </td>
 
-                        <!-- CANCELADO -->
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs rounded
-                                {{ $socio->cancelado ? 'bg-red-200 dark:bg-red-900 text-red-600 dark:text-red-400' : 'bg-green-200 dark:bg-green-900 text-green-600 dark:text-green-400' }}">
-                                {{ $socio->cancelado ? 'Sí' : 'No' }}
-                            </span>
-                        </td>
+                            <!-- CANCELADO -->
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="px-2 py-1 text-xs rounded
+                                    {{ $socio->cancelado ? 'bg-red-200 dark:bg-red-900 text-red-600 dark:text-red-400' : 'bg-green-200 dark:bg-green-900 text-green-600 dark:text-green-400' }}">
+                                    {{ $socio->cancelado ? 'Sí' : 'No' }}
+                                </span>
+                            </td>
 
-                        <!-- CUOTA -->
-                        <td class="px-4 py-3 font-semibold whitespace-nowrap">
-                            {{ $socio->cuota }} €
-                        </td>
+                            <!-- CUOTA -->
+                            <td class="px-4 py-3 font-semibold whitespace-nowrap">
+                                {{ $socio->cuota }} €
+                            </td>
 
-                        <!-- FECHAS -->
-                        <td class="px-4 py-3 text-xs md:text-sm whitespace-nowrap">
-                            {{ \Carbon\Carbon::parse($socio->fecha_alta)->format('d/m/Y') }}
-                        </td>
+                            <!-- FECHAS -->
+                            <td class="px-4 py-3 text-xs md:text-sm whitespace-nowrap">
+                                {{ \Carbon\Carbon::parse($socio->fecha_alta)->format('d/m/Y') }}
+                            </td>
 
-                        <td class="px-4 py-3 text-xs md:text-sm whitespace-nowrap">
-                            {{ $socio->fecha_fin ? \Carbon\Carbon::parse($socio->fecha_fin)->format('d/m/Y') : '-' }}
-                        </td>
+                            <td class="px-4 py-3 text-xs md:text-sm whitespace-nowrap">
+                                {{ $socio->fecha_fin ? \Carbon\Carbon::parse($socio->fecha_fin)->format('d/m/Y') : '-' }}
+                            </td>
 
-                        <td class="px-4 py-3 text-right flex justify-end gap-1">
+                            <td class="px-4 py-3 text-right flex justify-end gap-1">
 
-                            <!-- EDITAR -->
-                            <button type="button"
-                                @click="$dispatch('open-edit-socio', {
-                                    id: {{ $socio->id }},
-                                    nombre: '{{ $socio->user->nombre }}',
-                                    apellidos: '{{ $socio->user->apellidos }}',
-                                    dni: '{{ $socio->dni }}',
-                                    estado: '{{ $socio->estado }}',
-                                    cuota: '{{ $socio->cuota }}',
-                                    cancelado: '{{ $socio->cancelado }}'
-                                })"
-                                class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-
-                            <!-- ELIMINAR -->
-                            <form id="delete-socio-{{ $socio->id }}" method="POST"
-                                action="{{ route('panel.instructor.socios.destroy', $socio->id) }}">
-                                @csrf
-                                @method('DELETE')
-
+                                <!-- EDITAR -->
                                 <button type="button"
-                                    @click="$dispatch('open-confirm', {
-                                        title: 'Eliminar socio',
-                                        message: '¿Seguro que quieres eliminar este socio?',
-                                        action: '#delete-socio-{{ $socio->id }}'
+                                    @click="$dispatch('open-edit-socio', {
+                                        id: {{ $socio->id }},
+                                        nombre: '{{ $socio->user->nombre }}',
+                                        apellidos: '{{ $socio->user->apellidos }}',
+                                        dni: '{{ $socio->dni }}',
+                                        estado: '{{ $socio->estado }}',
+                                        cuota: '{{ $socio->cuota }}',
+                                        cancelado: '{{ $socio->cancelado }}'
                                     })"
-                                    class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
-                                    <i class="fa-solid fa-trash"></i>
+                                    class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:scale-105 hover:text-indigo-500 transition">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                            </form>
 
-                        </td>
+                                <!-- ELIMINAR -->
+                                <form id="delete-socio-{{ $socio->id }}" method="POST"
+                                    action="{{ route('panel.instructor.socios.destroy', $socio->id) }}">
+                                    @csrf
+                                    @method('DELETE')
 
-                    </tr>
+                                    <button type="button"
+                                        @click="$dispatch('open-confirm', {
+                                            title: 'Eliminar socio',
+                                            message: '¿Seguro que quieres eliminar este socio?',
+                                            action: '#delete-socio-{{ $socio->id }}'
+                                        })"
+                                        class="w-10 h-10 flex items-center justify-center text-red-600 hover:scale-105 hover:text-red-500 transition">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+
+                        </tr>
 
                     @empty
 
-                    <tr>
-                        <td colspan="7" class="text-center py-6 text-gray-500">
-                            No hay socios
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="7" class="text-center py-6 text-gray-500">
+                                No hay socios
+                            </td>
+                        </tr>
 
                     @endforelse
 

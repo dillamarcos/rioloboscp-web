@@ -45,6 +45,34 @@ Antes de comenzar, es necesario instalar:
   https://www.mysql.com/  
   https://www.apachefriends.org/
 
+### Configurar PHP en las variables de entorno (PATH)
+
+Si PHP se ha instalado manualmente (sin XAMPP), es necesario añadir su carpeta al PATH de Windows para poder ejecutar comandos como `php artisan`.
+
+1. Buscar dónde está instalado PHP, por ejemplo:
+
+```bash
+C:\php
+```
+
+O en Xampp
+
+```bash
+C:\xampp\php
+```
+
+Buscar en Windows: 'Editar las variables de entorno del sistema'
+Dentro de Path → Editar → Nuevo
+Añadir la ruta donde está instalado PHP.
+Guardar todos los cambios y reiniciar la terminal o VS Code.
+Comprobar que funciona ejecutando:
+
+```bash
+php -v
+```
+
+Si aparece la versión de PHP, ya está correctamente configurado.
+
 
 ### 2. Obtener el proyecto
 
